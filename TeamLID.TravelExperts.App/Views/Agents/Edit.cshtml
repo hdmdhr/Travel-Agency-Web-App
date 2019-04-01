@@ -1,0 +1,64 @@
+﻿@model TeamLID.TravelExperts.Repository.Domain.Agents
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Agents</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AgentId" />
+            <div class="form-group">
+                <label asp-for="AgtFirstName" class="control-label"></label>
+                <input asp-for="AgtFirstName" class="form-control" />
+                <span asp-validation-for="AgtFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgtMiddleInitial" class="control-label"></label>
+                <input asp-for="AgtMiddleInitial" class="form-control" />
+                <span asp-validation-for="AgtMiddleInitial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgtLastName" class="control-label"></label>
+                <input asp-for="AgtLastName" class="form-control" />
+                <span asp-validation-for="AgtLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgtBusPhone" class="control-label"></label>
+                <input asp-for="AgtBusPhone" class="form-control" />
+                <span asp-validation-for="AgtBusPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgtEmail" class="control-label"></label>
+                <input asp-for="AgtEmail" class="form-control" />
+                <span asp-validation-for="AgtEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgtPosition" class="control-label"></label>
+                <input asp-for="AgtPosition" class="form-control" />
+                <span asp-validation-for="AgtPosition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgencyId" class="control-label"></label>
+                <select asp-for="AgencyId" class="form-control" asp-items="ViewBag.AgencyId"></select>
+                <span asp-validation-for="AgencyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

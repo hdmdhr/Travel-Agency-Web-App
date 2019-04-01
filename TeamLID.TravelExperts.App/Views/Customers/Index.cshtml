@@ -1,0 +1,107 @@
+﻿@model IEnumerable<TeamLID.TravelExperts.Repository.Domain.Customers>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustProv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustPostal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustHomePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustBusPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Agent)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustProv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustPostal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustHomePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustBusPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agent.AgentId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CustomerId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
