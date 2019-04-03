@@ -32,7 +32,13 @@ namespace TeamLID.TravelExperts.App.Controllers
             // TODO: 1. maybe do some validation. 2. create a Customers obj using info from UserViewModel, insert into DB
             return View();
         }
+        //int customerId
+        public async Task<IActionResult> History()
+        {
+            // TODO: use customer id to do some query, find out purchase history, make a IEnumerable<Packages>, and pass it into view to display
 
+            return View();
+        }
 
         // ------------------ Auto-generated Actions Below ------------------------
 
