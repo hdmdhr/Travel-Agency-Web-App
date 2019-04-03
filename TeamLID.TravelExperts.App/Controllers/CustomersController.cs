@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using TeamLID.TravelExperts.App.Models;
 using TeamLID.TravelExperts.Repository.Domain;
 
 namespace TeamLID.TravelExperts.App.Controllers
@@ -17,6 +18,23 @@ namespace TeamLID.TravelExperts.App.Controllers
         {
             _context = context;
         }
+
+        public ViewResult Register()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(UserViewModel user)
+        {
+            // TODO: 1. maybe do some validation. 2. create a Customers obj using info from UserViewModel, insert into DB
+            return View();
+        }
+
+
+        // ------------------ Auto-generated Actions Below ------------------------
 
         // GET: Customers
         public async Task<IActionResult> Index()
