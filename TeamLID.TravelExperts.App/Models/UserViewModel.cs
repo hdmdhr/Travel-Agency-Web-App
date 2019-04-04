@@ -33,9 +33,9 @@ namespace TeamLID.TravelExperts.App.Models
         [Required,DisplayName("Email")]
         public string CustEmail { get; set; }
         public int? AgentId { get; set; }
-        [Required, MaxLength(50)]
+        [Required, MinLength(5), MaxLength(50)]
         public string Username { get; set; }
-        [DataType(DataType.Password), MaxLength(50)]
+        [DataType(DataType.Password), MinLength(5), MaxLength(50)]
         public string Password { get; set; }
         [DataType(DataType.Password),Compare(nameof(Password)),DisplayName("Password Confirm")]
         public string PasswordConfirm { get; set; }

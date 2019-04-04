@@ -30,6 +30,12 @@ namespace TeamLID.TravelExperts.App.Controllers
         public async Task<IActionResult> Register(UserViewModel user)
         {
             // TODO: 1. maybe do some validation. 2. create a Customers obj using info from UserViewModel, insert into DB
+
+            var newCust = new Customers
+            {
+
+            };
+
             return View();
         }
         //int customerId
