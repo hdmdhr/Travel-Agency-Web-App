@@ -32,6 +32,8 @@
     <Content Remove="wwwroot\images\Travel3.jpg" />
     <Content Remove="wwwroot\images\Travel2.jpg" />
     <Content Remove="wwwroot\images\Travel1.jpg" />
+    <Content Remove="Views\Packages\Create.cshtml" />
+    <Content Remove="wwwroot\images\European.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\images\comp2.jpg" />
@@ -45,6 +47,7 @@
     <None Include="wwwroot\images\Travel3.jpg" />
     <None Include="wwwroot\images\Travel2.jpg" />
     <None Include="wwwroot\images\Travel1.jpg" />
+    <None Include="wwwroot\images\European.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\PackagesController.cs" />

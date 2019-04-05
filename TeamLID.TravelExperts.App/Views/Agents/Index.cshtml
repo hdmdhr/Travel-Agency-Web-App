@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<TeamLID.TravelExperts.Repository.Domain.Agents>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Agents";
 }
 
-<h1>Index</h1>
+@*<h1>Index</h1>*@
 
-<p>
+@* You shouldn't be able to create new if you're not an admin user  *@
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
 <table class="table">
     <thead>
         <tr>
@@ -61,9 +62,13 @@
                 @Html.DisplayFor(modelItem => item.Agency.AgencyId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.AgentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AgentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AgentId">Delete</a>
+
+                @* You shouldn't be able to edit if not a Admin user *@  
+
+                @* <a asp-action="Edit" asp-route-id="@item.AgentId">Edit</a> |*@
+
+                <a asp-action="Details" asp-route-id="@item.AgentId">View Profile</a> 
+
             </td>
         </tr>
 }
