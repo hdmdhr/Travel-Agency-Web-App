@@ -33,7 +33,11 @@ namespace TeamLID.TravelExperts.App
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            var connection = @"Server=localhost\sqlexpress;Database=TravelExperts;Trusted_Connection=True;ConnectRetryCount=0";
+            //var connection = @"Server=localhost\sqlexpress;Database=TravelExperts;Trusted_Connection=True;ConnectRetryCount=0";
+
+            //Always delete before pushing to github
+            var connection = @"Server=localhost,1401;User=SA;Password=selfmade123#;Database=TravelExperts;";
+
             services.AddDbContext<TravelExpertsContext>(options => options.UseSqlServer(connection));
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

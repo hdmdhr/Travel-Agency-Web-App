@@ -18,4 +18,33 @@
     <ProjectReference Include="..\TeamLID.TravelExperts.Repository\TeamLID.TravelExperts.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\images\comp2.jpg" />
+    <Content Remove="wwwroot\images\comp6.jpg" />
+    <Content Remove="wwwroot\images\comp5.jpg" />
+    <Content Remove="wwwroot\images\comp4.jpg" />
+    <Content Remove="wwwroot\images\carib-new.jpeg" />
+    <Content Remove="wwwroot\images\Polyn.jpeg" />
+    <Content Remove="wwwroot\images\Asian.jpeg" />
+    <Content Remove="wwwroot\images\logo3.png" />
+    <Content Remove="wwwroot\images\Travel3.jpg" />
+    <Content Remove="wwwroot\images\Travel2.jpg" />
+    <Content Remove="wwwroot\images\Travel1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\images\comp2.jpg" />
+    <None Include="wwwroot\images\comp6.jpg" />
+    <None Include="wwwroot\images\comp5.jpg" />
+    <None Include="wwwroot\images\comp4.jpg" />
+    <None Include="wwwroot\images\carib-new.jpeg" />
+    <None Include="wwwroot\images\Polyn.jpeg" />
+    <None Include="wwwroot\images\Asian.jpeg" />
+    <None Include="wwwroot\images\logo3.png" />
+    <None Include="wwwroot\images\Travel3.jpg" />
+    <None Include="wwwroot\images\Travel2.jpg" />
+    <None Include="wwwroot\images\Travel1.jpg" />
+  </ItemGroup>
 </Project>
