@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="~/css/site.css" />
 
     <style>
+        body {
+            background: #F8FAF7 !important;
+        }
+
         .landing-greetings {
             /* font-family: 'Marck Script', cursive; */
             font-family: 'Aclonica', sans-serif;
@@ -273,29 +277,32 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                    <ul class="navbar-nav justify-content-end flex-grow-1">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+                        </li>*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Packages" asp-action="Index">Packages</a>
                         </li>
+                        @* Agents should only be visible for Admin users not all *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Agents" asp-action="Index">Agent</a>
+                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" asp-area="" asp-controller="Customers" asp-action="Index">Customer</a>
+                            <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" asp-area="" asp-controller="Customers" asp-action="Index">Account</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" asp-controller="Customers" asp-action="Register">Register</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-controller="Customers" asp-action="Login">Login</a>
-                                <a class="dropdown-item" asp-controller="Customers" asp-action="History">History</a>
-                                <a class="dropdown-item" href="#">Separated link</a>
+                                <!-- If user session exists, which means customer user has been authenticated, then show the links below -->
+                                <a class="dropdown-item" asp-controller="Customers" asp-action="Login">Logout</a>
+                                <a class="dropdown-item" asp-controller="Customers" asp-action="">Profile</a>
+                                @*<a class="dropdown-item" href="#">Separated link</a>*@
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Agents" asp-action="Index">Agent</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a>
-                        </li>
+                        @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a>
+        </li>*@
                     </ul>
                 </div>
             </div>
