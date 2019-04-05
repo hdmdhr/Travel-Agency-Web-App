@@ -42,7 +42,10 @@ namespace TeamLID.TravelExperts.Repository.Domain
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=localhost\\sqlexpress;Database=TravelExperts;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Server=localhost\\sqlexpress;Database=TravelExperts;Trusted_Connection=True;");
+
+                //Always delete before pushing to github
+                optionsBuilder.UseSqlServer(@"Server=localhost,1401;User=SA;Password=selfmade123#;Database=TravelExperts;");
             }
         }
 

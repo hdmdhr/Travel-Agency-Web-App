@@ -54,3 +54,238 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.landing-greetings {
+    /* font-family: 'Marck Script', cursive; */
+    font-family: 'Aclonica', sans-serif;
+    text-align: center;
+    font-size: 45px;
+}
+
+.packages-display {
+    /* font-family: 'Marck Script', cursive; */
+    font-family: 'Aclonica', sans-serif;
+    text-align: center;
+    font-size: 30px;
+}
+
+.contact-greetings, .register-greetings {
+    font-family: 'Aclonica', sans-serif;
+    /* text-align: center; */
+    font-size: 45px;
+}
+
+.cities {
+    margin-top: 20px;
+}
+
+.destinations {
+    font-family: 'Aclonica', sans-serif;
+}
+
+/* .landing-carousel{ */
+/* text-align: center; */
+/* height: 100px;  */
+/* } */
+
+/*.carousel-inner > .item > img {
+    width: 1200px;
+    height: 500px;
+}*/
+
+
+.comp-contacts > ul, .register-heading, .btn, input[placeholder], .footer, p {
+    list-style: none;
+    font-family: 'Metrophobic', sans-serif;
+}
+
+.agent-contacts {
+    font-family: 'Aclonica', sans-serif;
+    text-align: center;
+    font-size: 35px;
+    margin-top: 20px;
+}
+
+.agent-box, .register-box {
+    margin-bottom: 40px;
+    background: #fff;
+    border: #D9E5D6 solid 1px;
+    border-radius: 10px;
+    padding: 30px;
+    min-height: 800px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.agent > .card {
+    margin-top: 40px;
+    border: #F3EAC5 solid 1px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.02), 0 10px 10px rgba(0, 0, 0, 0.06);
+}
+
+.agent > .card:hover, .package:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transition: all 0.8s ease-in-out;
+}
+
+.package {
+    border: #fff solid 1px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.02), 0 10px 10px rgba(0, 0, 0, 0.06);
+}
+
+a {
+    text-decoration: none;
+}
+
+.landing-para {
+    text-align: center;
+}
+
+.card-title, .landing-para {
+    font-family: 'Berkshire Swash', cursive;
+}
+
+.list-group-item, .description {
+    font-family: 'Metrophobic', sans-serif;
+}
+
+.description {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.focus-feedback {
+    display: none;
+}
+
+.focus-display {
+    color: #EDAE49;
+    font-size: 13px;
+    display: block;
+}
+
+.validation {
+    display: none;
+}
+
+.validation-error {
+    color: red;
+    display: block;
+    font-size: 13px;
+}
+
+.nav-hidden {
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.nav-item {
+    margin-left: 15px;
+}
+
+    .nav-item:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        color: white;
+        /* background: #5D605F; */
+    }
+
+/* .container-header {
+    position: relative;
+    padding: 0;
+} */
+
+.jumbotron-register {
+    background-image: url('https://images.pexels.com/photos/1712326/pexels-photo-1712326.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+    background-size: cover;
+    color: white;
+    /* position: relative; */
+    min-height: 400px;
+}
+
+.jumbotron-contact {
+    background-image: url('https://images.pexels.com/photos/1416530/pexels-photo-1416530.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    background-size: cover;
+    color: white;
+}
+
+.jumbotron-gallery {
+    background-image: url('https://images.pexels.com/photos/20967/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    background-size: cover;
+    color: white;
+    min-height: 400px;
+}
+
+.jumbotron-landing {
+    background-image: url('https://images.pexels.com/photos/372098/pexels-photo-372098.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=700&w=1260');
+    min-height: 780px;
+    color: white;
+    background-size: cover;
+}
+
+.jumbotron-packages {
+    background-image: url('https://images.pexels.com/photos/1471686/pexels-photo-1471686.jpeg?cs=srgb&dl=bow-box-card-1471686.jpg&fm=jpg');
+    background-size: cover;
+    color: white;
+    min-height: 400px;
+}
+
+.jumbotron-login {
+    background-image: url('https://images.pexels.com/photos/792034/pexels-photo-792034.jpeg?cs=srgb&dl=access-close-up-door-792034.jpg&fm=jpg');
+    background-size: cover;
+    color: white;
+    min-height: 450px;
+}
+
+.jumbotron-agent {
+    background-image: url('https://images.pexels.com/photos/684385/pexels-photo-684385.jpeg?cs=srgb&dl=adult-agent-approval-684385.jpg&fm=jpg');
+    background-size: cover;
+    color: white;
+    min-height: 400px;
+}
+
+.jumbotron-customer {
+    background-image: url('https://images.pexels.com/photos/1332191/pexels-photo-1332191.jpeg?cs=srgb&dl=banking-bill-breakfast-1332191.jpg&fm=jpg');
+    background-size: cover;
+    color: white;
+    min-height: 400px;
+}
+
+.index-greeting {
+    font-family: 'Righteous', cursive;
+}
+
+.morning {
+    background: #A3D3E1;
+    padding: 10px;
+    max-width: 200px;
+    color: #F3F9F9;
+    font-family: 'Metrophobic', sans-serif;
+    border-radius: 15px;
+}
+
+.afternoon {
+    background: #D2E5F6;
+    padding: 10px;
+    max-width: 200px;
+    color: #F3F9F9;
+    font-family: 'Metrophobic', sans-serif;
+    border-radius: 15px;
+}
+
+.evening {
+    background: #475761;
+    padding: 10px;
+    max-width: 200px;
+    color: #F3F9F9;
+    font-family: 'Metrophobic', sans-serif;
+    border-radius: 15px;
+}
+
+.parallax {
+    /* Set a specific height */
+    height: 600px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
