@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Views\SubPack\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\images\comp2.jpg" />
