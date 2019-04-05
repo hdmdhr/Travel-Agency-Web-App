@@ -7,7 +7,6 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
@@ -46,5 +45,8 @@
     <None Include="wwwroot\images\Travel3.jpg" />
     <None Include="wwwroot\images\Travel2.jpg" />
     <None Include="wwwroot\images\Travel1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\PackagesController.cs" />
   </ItemGroup>
 </Project>
