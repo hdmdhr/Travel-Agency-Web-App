@@ -19,6 +19,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Views\Packages\" />
+    <Folder Include="Views\NewPackages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\images\comp2.jpg" />
@@ -32,7 +34,6 @@
     <Content Remove="wwwroot\images\Travel3.jpg" />
     <Content Remove="wwwroot\images\Travel2.jpg" />
     <Content Remove="wwwroot\images\Travel1.jpg" />
-    <Content Remove="Views\Packages\Create.cshtml" />
     <Content Remove="wwwroot\images\European.jpeg" />
   </ItemGroup>
   <ItemGroup>
