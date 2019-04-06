@@ -19,6 +19,7 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
                 .ToList();
                                         
             return bookings;
+
         }
     }
 }
