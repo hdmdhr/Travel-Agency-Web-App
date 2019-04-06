@@ -1,4 +1,5 @@
-@model IEnumerable<TeamLID.TravelExperts.Repository.Domain.Packages>
+@*@model IEnumerable<TeamLID.TravelExperts.Repository.Domain.Packages>*@
+@model IEnumerable<TeamLID.TravelExperts.App.Models.PackagesModel>
 
 @{
     ViewData["Title"] = "Packages";
@@ -87,7 +88,7 @@
                 <br>
                 <!-- <hr> -->
 
-                <h3 class="agent-contacts">Book Now</h3>
+                <h3 class="agent-contacts">Overview</h3>
 
                 <div class="table-responsive-lg">
                     <table class='table table-hover'>
@@ -109,9 +110,9 @@
                                     @Html.DisplayNameFor(model => model.PkgBasePrice)
                                 </th>
                                 @*<th>
-                                    @Html.DisplayNameFor(model => model.PkgAgencyCommission)
-                                </th>*@
-                                <th></th>
+                                        @Html.DisplayNameFor(model => model.PkgAgencyCommission)
+                                    </th>*@
+                                @*<th></th>*@
                             </tr>
                         </thead>
                         <tbody>
@@ -133,10 +134,10 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.PkgBasePrice)
                                     </td>
-                                    <td><button class="btn btn-success"><a></a> Book</button></td>
+                                    @*<td><button class="btn btn-success"><a></a> Book</button></td>*@
                                     @*<td>
-                                        @Html.DisplayFor(modelItem => item.PkgAgencyCommission)
-                                    </td>*@
+                                            @Html.DisplayFor(modelItem => item.PkgAgencyCommission)
+                                        </td>*@
                                     @*<td>
                                             <a asp-action="Edit" asp-route-id="@item.PackageId">Edit</a> |
                                             <a asp-action="Details" asp-route-id="@item.PackageId">Details</a> |
