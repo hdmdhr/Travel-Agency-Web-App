@@ -19,15 +19,15 @@ namespace TeamLID.TravelExperts.App.Models
         public string CustAddress { get; set; }
         [Required, DisplayName("City")]
         public string CustCity { get; set; }
-        [Required,DisplayName("Province")]
+        [Required,DisplayName("Province"),RegularExpression(@"^[A-Za-z]{2}$")]
         public string CustProv { get; set; }
-        [Required,DisplayName("Postal Code")]
+        [Required,DisplayName("Postal Code"),RegularExpression(@"^[A-Za-z]\d[A-Za-z][-\ ]?\d[A-Za-z]\d$")]
         public string CustPostal { get; set; }
         [DisplayName("Country")]
         public string CustCountry { get; set; }
-        [DisplayName("Home Phone")]
+        [DisplayName("Home Phone"),RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$")]
         public string CustHomePhone { get; set; }
-        [Required, DisplayName("Business Phone")]
+        [Required, DisplayName("Business Phone"), RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$")]
         public string CustBusPhone { get; set; }
         [Required,DisplayName("Email")]
         public string CustEmail { get; set; }
