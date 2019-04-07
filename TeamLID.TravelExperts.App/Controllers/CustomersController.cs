@@ -103,6 +103,13 @@ namespace TeamLID.TravelExperts.App.Controllers
             }
         }
 
+        // GET: logout
+        public IActionResult Logout()
+        {
+            // unset session
+            HttpContext.Session.Remove("login");
+            return View("Login");
+        }
 
 
         // TODO: ----- Louise -----
