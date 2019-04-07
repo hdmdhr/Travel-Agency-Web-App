@@ -117,12 +117,15 @@
                             <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
                         </div>
 
-                        <div class="form-group col-sm-12">
-                            <button type="submit" class="btn btn-outline-success btn-block" id="submitBtn" name="regBtn">Register</button>
+                        <div class="form-group col-sm-6">
+                            <p>Have an account already? Kindly <a asp-controller="Customers" asp-action="Login" style="color:green;">Login</a></p>
                         </div>
-                        @*<div class="form-group col-sm-6">
-                            <button type="reset" class="btn btn-outline-info btn-block" id="resetBtn" name="resBtn">Reset</button>
-                        </div>*@
+                            <div class="form-group col-sm-12">
+                                <button type="submit" class="btn btn-outline-success btn-block" id="submitBtn" name="regBtn">Register</button>
+                            </div>
+                            @*<div class="form-group col-sm-6">
+                                <button type="reset" class="btn btn-outline-info btn-block" id="resetBtn" name="resBtn">Reset</button>
+                            </div>*@
                     </form>
                     </div>
                 </div>                               

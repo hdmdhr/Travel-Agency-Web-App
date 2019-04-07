@@ -61,8 +61,8 @@ namespace TeamLID.TravelExperts.App.Controllers
                 {
                     // 4. if insert successfully, login user(create session), redirect to history page
                     await CustomerProfileManager.Add(newCust);
-                    // TODO: login user (save user in session)
-                    return RedirectToAction("History", new { customerId = 1 });  // TODO: hard code, need change
+                    //return RedirectToAction("Login", "Login");
+                    return View("Login");
                 }
                 catch (Exception e)
                 {
@@ -93,7 +93,7 @@ namespace TeamLID.TravelExperts.App.Controllers
                 // if username and pin match, add user to session
                 HttpContext.Session.SetObject("login", cust);
                 // direct to history page, with parameter customerId
-                return RedirectToAction("History", new { customerId = cust.CustomerId });
+                return RedirectToAction("CustomerHistory", new { customerId = cust.CustomerId });
             }
             else
             {
@@ -112,15 +112,53 @@ namespace TeamLID.TravelExperts.App.Controllers
         }
 
 
-        // TODO: ----- Louise -----
-        public async Task<IActionResult> History(int customerId)
+
+        // GET: Bookings by customer (Customer Booking History)
+        public ActionResult CustomerHistory()
         {
-            // TODO: use customer id to do some query, find out purchase history, make a IEnumerable<Packages> object as model, pass it into view to display
+            if (HttpContext.Session.GetObject<CustomerProfileManager>("login") != null) {
 
-            IEnumerable<Packages> model = null;  // instead of null, use actual query result
+                //var cust = HttpContext.Session.TryGetValue("login", );
 
-            return View(model);
+                var cust = HttpContext.Session.GetObject<Customers>("login");
+
+                // Change this to Id retrieved from sessions
+                int id = cust.CustomerId;
+
+                var bookings = BookingsManager.GetAllBookingsByCustomer(id)
+                    .Select(bk => new BookingsModel
+                    {
+                        BookingId = bk.BookingId,
+                        BookingDate = bk.BookingDate,
+                        BookingNo = bk.BookingNo,
+                        TravelerCount = bk.TravelerCount,
+                        CustomerId = bk.Customer.CustFirstName,
+                        TripTypeId = bk.TripType.Ttname,
+                        PackageId = bk.Package.PkgName
+                    }).ToList();
+
+                return View(bookings);
+
+            } else {
+                return View("Login");
+                //return RedirectToAction("Login");
+            }
         }
+
+
+        // TODO: ----- Louise -----
+
+        //This isn't necessary any longer you can check the customer history above
+        // but if you feel like writing some code, by all means go ahead...
+
+        //public async Task<IActionResult> History(int customerId)
+        //{
+        //    // TODO: use customer id to do some query, find out purchase history, make a IEnumerable<Packages> object as model, pass it into view to display
+
+        //    IEnumerable<Packages> model = null;  // instead of null, use actual query result
+
+        //    return View(model);
+        //}
 
         // ------------------ Convenient Methods ---------------------
 

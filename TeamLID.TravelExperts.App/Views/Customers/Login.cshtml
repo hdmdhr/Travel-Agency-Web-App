@@ -1,33 +1,72 @@
 ﻿@model LoginViewModel
 
-@section Styles {
+@*@section Styles {
     <link href="@Url.Content("~/css/signin.css")" rel="stylesheet" type="text/css" />
-}
+}*@
 
-@{
+@*@{
     ViewData["Title"] = "Login";
+}*@
+
+<div class="jumbotron jumbotron-fluid jumbotron-login">
+    <div class="container">
+        <h1 class="display-4 register-greetings h1-responsive">Login</h1>
+        <hr class="my-4">
+        <p class="lead register-heading">Welcome to Travel Experts, Login to continue</p>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+
+        <div class="register-main">
+
+            <div class="register-box">
+                <div class="row">
+                    <div class='col-md-8 offset-md-2'>
+
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    
+                        <form asp-action="Login" asp-controller="Customers" class="form-signin text-center">
+                            @if (ViewBag.msg != null)
+    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @*@ViewBag.msg*@
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 }
 
-<form asp-action="Login" asp-controller="Customers" class="form-signin text-center">
-    <img class="mb-4" src="~/images/balloon.png" alt="logo" width="72" height="72">
-    @if (ViewBag.msg != null)
-    {
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            @ViewBag.msg
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                        @*<h1 class="h3 mb-3 font-weight-normal">Please log in</h1>*@
+
+                            <div class="form-group">
+
+                                <label for="inputEmail" class="sr-only">Username</label>
+                                <input type="text" asp-for="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+
+                            </div>                            
+                            <div class="form-group">
+                                <label for="inputPassword" class="sr-only">Password</label>
+                                <input type="password" asp-for="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="checkbox mb-3">
+                                <label>
+                                    <input type="checkbox" value="remember-me"> Remember me
+                                </label>
+                            </div>
+
+                            <div>
+                                <p>Don't have an account? Kindly <a asp-controller="Customers" asp-action="Register" style="color:green;">Register</a></p>
+                            </div>
+                            <button class="btn btn btn-outline-primary btn-block" type="submit">Log In</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-    }
-    <h1 class="h3 mb-3 font-weight-normal">Please log in</h1>
-    <label for="inputEmail" class="sr-only">Username</label>
-    <input type="text" asp-for="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" asp-for="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
     </div>
-    <button class="btn btn-lg btn-outline-primary btn-block w-50 mx-auto" type="submit">Log In</button>
-</form>
+</main>
