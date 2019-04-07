@@ -35,6 +35,7 @@ namespace TeamLID.TravelExperts.App
 
             var connection = @"Server=localhost\sqlexpress;Database=TravelExperts;Trusted_Connection=True;ConnectRetryCount=0";
 
+
             services.AddDbContext<TravelExpertsContext>(options => options.UseSqlServer(connection));
             services.AddSession(options => {  options.IdleTimeout = TimeSpan.FromMinutes(30); });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
