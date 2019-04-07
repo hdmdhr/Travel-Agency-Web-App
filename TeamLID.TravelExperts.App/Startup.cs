@@ -35,8 +35,6 @@ namespace TeamLID.TravelExperts.App
 
             var connection = @"Server=localhost\sqlexpress;Database=TravelExperts;Trusted_Connection=True;ConnectRetryCount=0";
 
-            //Always delete before pushing to github
-
 
             services.AddDbContext<TravelExpertsContext>(options => options.UseSqlServer(connection));
             

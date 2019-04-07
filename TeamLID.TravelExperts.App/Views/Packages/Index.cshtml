@@ -1,0 +1,154 @@
+@*@model IEnumerable<TeamLID.TravelExperts.Repository.Domain.Packages>*@
+@model IEnumerable<TeamLID.TravelExperts.App.Models.PackagesModel>
+
+@{
+    ViewData["Title"] = "Packages";
+}
+
+
+<header class="container-header">
+    
+    <div class="jumbotron jumbotron-fluid jumbotron-packages">
+        <div class="container">
+            <h1 class="display-4 contact-greetings h1-responsive">Packages</h1>
+            <hr class="my-4">
+        </div>
+    </div>
+
+</header>
+
+<main>
+
+    <div class="container-fluid">
+
+        <div class="contact-main">
+
+            <div class="agent-box">
+
+                <h2 class="agent-contacts">Package Deals</h2>
+
+                <p class="description lead fw-100">Created just for you. Browse through and book today.</p>
+
+                <br>
+
+                <div class="card-deck">
+                    <div class="card package">
+                        <img src="~/images/carib-new.jpeg" class="card-img-top" alt="caribbean">
+                        <div class="card-body">
+                            <h4 class="card-title h4-responsive"> <strong> Caribbean New Year</strong></h4>
+                            <p class="card-text">Cruise the caribbean and celebrate the New Year.</p>
+                        </div>
+                        <blockquote class="blockquote mb-0 card-body">
+                            <footer class="">
+                                <p class='lead'> CAD$ 5200 </p>
+                            </footer>
+                        </blockquote>
+                    </div>
+                    <div class="card package">
+                        <img src="~/images/Polyn.jpeg" class="card-img-top" alt="polynesian">
+                        <div class="card-body">
+                            <h4 class="card-title h4-responsive"> <strong> Polynesian Paradise</strong></h4>
+                            <p class="card-text">8 Days All Inclusive Hawaiian Vacation.</p>
+                        </div>
+                        <blockquote class="blockquote mb-0 card-body">
+                            <footer class="">
+                                <p class='lead'> CAD$ 3310 </p>
+                            </footer>
+                        </blockquote>
+                    </div>
+                    <div class="card package">
+                        <img src="~/images/Asian.jpeg" class="card-img-top" alt="asian">
+                        <div class="card-body">
+                            <h4 class="card-title h4-responsive"> <strong>Asian Expedition </strong></h4>
+                            <p class="card-text">Airfaire, Hotel and Eco Tour.</p>
+                        </div>
+
+                        <blockquote class="blockquote mb-0 card-body">
+                            <footer class="">
+                                <p class='lead'> CAD$ 3100 </p>
+                            </footer>
+                        </blockquote>
+                    </div>
+                    <div class="card package">
+                        <img src="~/images/European.jpeg" class="card-img-top" alt="asian">
+                        <div class="card-body">
+                            <h4 class="card-title h4-responsive"> <strong>European Vacation</strong></h4>
+                            <p class="card-text">Euro Tour with Rail Pass and Travel Insurance</p>
+                        </div>
+
+                        <blockquote class="blockquote mb-0 card-body">
+                            <footer class="">
+                                <p class='lead'> CAD$ 3280 </p>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <!-- <hr> -->
+
+                <h3 class="agent-contacts">Overview</h3>
+
+                <div class="table-responsive-lg">
+                    <table class='table table-hover'>
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PkgName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PkgStartDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PkgEndDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PkgDesc)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PkgBasePrice)
+                                </th>
+                                @*<th>
+                                        @Html.DisplayNameFor(model => model.PkgAgencyCommission)
+                                    </th>*@
+                                @*<th></th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PkgName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PkgStartDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PkgEndDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PkgDesc)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PkgBasePrice)
+                                    </td>
+                                    @*<td><button class="btn btn-success"><a></a> Book</button></td>*@
+                                    @*<td>
+                                            @Html.DisplayFor(modelItem => item.PkgAgencyCommission)
+                                        </td>*@
+                                    @*<td>
+                                            <a asp-action="Edit" asp-route-id="@item.PackageId">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.PackageId">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.PackageId">Delete</a>
+                                        </td>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
