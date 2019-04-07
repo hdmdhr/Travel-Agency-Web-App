@@ -37,7 +37,7 @@ namespace TeamLID.TravelExperts.App
 
 
             services.AddDbContext<TravelExpertsContext>(options => options.UseSqlServer(connection));
-            
+            services.AddSession(options => {  options.IdleTimeout = TimeSpan.FromMinutes(30); });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -58,7 +58,7 @@ namespace TeamLID.TravelExperts.App
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@using TeamLID.TravelExperts.Repository.Domain
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -10,6 +12,7 @@
         <link href="https://fonts.googleapis.com/css?family=Marck+Script|Aclonica|Berkshire+Swash|Metrophobic" rel="stylesheet">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        @RenderSection("Styles", false)
     </environment>
     <environment exclude="Development">
         <link href="https://fonts.googleapis.com/css?family=Marck+Script|Aclonica|Berkshire+Swash|Metrophobic" rel="stylesheet">
@@ -286,20 +289,27 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Packages" asp-action="Index">Packages</a>
                         </li>
-                        @* Agents should only be visible for Admin users not all *@
-                        @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Agents" asp-action="Index">Agent</a>
-                        </li>*@
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" asp-area="" asp-controller="Customers" asp-action="Index">Account</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-controller="Customers" asp-action="Register">Register</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="Customers" asp-action="Login">Login</a>
-                                <!-- If user session exists, which means customer user has been authenticated, then show the links below -->
-                                <a class="dropdown-item" asp-controller="Customers" asp-action="Login">Logout</a>
-                                <a class="dropdown-item" asp-controller="Bookings" asp-action="CustomerHistory">Booking/Order History</a>
-                                <a class="dropdown-item" asp-controller="Customers" asp-action="">Profile</a>
+                                <!-- If user session doesn't exist, show login & register, otherwise show logout & history -->
+                                @{
+                                    if (Context.Session.GetObject<Customers>("login") == null)
+                                    {
+                                        <a class="dropdown-item" asp-controller="Customers" asp-action="Register">Register</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" asp-controller="Customers" asp-action="Login">Login</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="dropdown-item" asp-controller="Customers" asp-action="History">Booking History</a>
+                                        <a class="dropdown-item" asp-controller="Customers" asp-action="">My Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" asp-controller="Customers" asp-action="Logout">Logout</a>
+                                    }
+                                    
+                                    
+                                }
                             </div>
                         </li>
                         @*<li class="nav-item">
@@ -313,6 +323,15 @@
     <div class="container-fluid">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
+            @{var loginCust = Context.Session.GetObject<Customers>("login");}
+            @if (loginCust != null)
+            {
+                var greetMsg = "Hello, " + loginCust.CustFirstName;
+            <h1 class="display-4 register-greetings h1-responsive text-center">
+                @greetMsg
+            </h1>
+    }
+
             @RenderBody()
         </main>
     </div>
