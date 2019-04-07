@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TravelExperts</title>
+    <title>@ViewData["Title"] | TravelExperts</title>
 
     <link href="https://fonts.googleapis.com/css?family=Marck+Script|Aclonica|Berkshire+Swash|Metrophobic" rel="stylesheet">
     <environment include="Development">
@@ -298,8 +298,8 @@
                                 <a class="dropdown-item" asp-controller="Customers" asp-action="Login">Login</a>
                                 <!-- If user session exists, which means customer user has been authenticated, then show the links below -->
                                 <a class="dropdown-item" asp-controller="Customers" asp-action="Login">Logout</a>
-                                <a class="dropdown-item" asp-controller="Customers" asp-action="">Profile</a>
                                 <a class="dropdown-item" asp-controller="Bookings" asp-action="CustomerHistory">Booking/Order History</a>
+                                <a class="dropdown-item" asp-controller="Customers" asp-action="">Profile</a>
                             </div>
                         </li>
                         @*<li class="nav-item">
@@ -310,7 +310,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()

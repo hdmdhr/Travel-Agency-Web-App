@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using TeamLID.TravelExperts.App.Models;
 using TeamLID.TravelExperts.App.Models.DataManager;
 using TeamLID.TravelExperts.Repository.Domain;
 
@@ -32,8 +33,18 @@ namespace TeamLID.TravelExperts.App.Controllers
             // Change this to Id retrieved from sessions
             int id = 143;
 
-            var bookings = BookingsManager.GetAllBookingsByCustomer(id);
-
+            var bookings = BookingsManager.GetAllBookingsByCustomer(id)
+                .Select(bk => new BookingsModel
+                {
+                    BookingId = bk.BookingId,
+                    BookingDate = bk.BookingDate,
+                    BookingNo = bk.BookingNo,
+                    TravelerCount = bk.TravelerCount,
+                    CustomerId = bk.Customer.CustFirstName,
+                    TripTypeId = bk.TripType.Ttname,
+                    PackageId = bk.Package.PkgName                            
+                }).ToList();
+                
             return View(bookings);
 
         }
