@@ -1,0 +1,33 @@
+﻿@model LoginViewModel
+
+@section Styles {
+    <link href="@Url.Content("~/css/signin.css")" rel="stylesheet" type="text/css" />
+}
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<form asp-action="Login" asp-controller="Customers" class="form-signin text-center">
+    <img class="mb-4" src="~/images/balloon.png" alt="logo" width="72" height="72">
+    @if (ViewBag.msg != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @ViewBag.msg
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <h1 class="h3 mb-3 font-weight-normal">Please log in</h1>
+    <label for="inputEmail" class="sr-only">Username</label>
+    <input type="text" asp-for="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" asp-for="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-outline-primary btn-block w-50 mx-auto" type="submit">Log In</button>
+</form>

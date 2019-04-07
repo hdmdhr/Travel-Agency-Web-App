@@ -21,13 +21,14 @@ namespace TeamLID.TravelExperts.App.Controllers
             _context = context;
         }
 
-        // First time user try to access register page
+        // GET: user access register page
         [HttpGet]
         public ViewResult Register()
         {
             return View();
         }
 
+        // POST: user submit regsiter form
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(UserViewModel user)
@@ -67,10 +68,42 @@ namespace TeamLID.TravelExperts.App.Controllers
                 {
                     // 5. if insert failed, go to register page with old inputs and error msg
                     ViewBag.msg = "username is already in use, please login.";
+                    ViewBag.reason = e.InnerException.Message;  // sqlserver exception message, not very readable
                     return View("Register", user);
                 }
             }
         }
+
+        // GET: user access login page
+        public async Task<IActionResult> Login()
+        {
+            return View();
+        }
+
+        // POST: user try to login
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel login)
+        {
+            // compare input username and password against database
+            var cust = await CustomerProfileManager.CompareLogin(login.username, login.password);
+
+            if (cust != null)
+            { 
+                // if username and pin match, add user to session
+                HttpContext.Session.SetObject("login", cust);
+                // direct to history page, with parameter customerId
+                return RedirectToAction("History", new { customerId = cust.CustomerId });
+            }
+            else
+            {
+                // if username and pin don't match, go back to login page with error msg
+                ViewBag.msg = "Sorry, username or password is invalid.";
+                return View("Login");
+            }
+        }
+
+
 
         // TODO: ----- Louise -----
         public async Task<IActionResult> History(int customerId)
