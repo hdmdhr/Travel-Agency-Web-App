@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TeamLID.TravelExperts.Repository.Domain;
 
@@ -7,7 +8,10 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
 {
     public class CustomerProfileManager
     {
-        //public static List<> GetAllBookingsByCustomer(int )
+        // TODO: Louise - get a customer's all previous bookings using id
+        //public static List<> GetAllBookingsByCustomer(int custId) { }
+
+        // Below is an example Louise can refer to ↓
 
         //public static List<Asset> GetAllByAssetType(int assetTypeId)
         //{
@@ -19,6 +23,11 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
         //    return assets;
         //}
 
+        /// <summary>
+        /// Find a certain customer using id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Customers object.</returns>
         public static Customers Find(int id)
         {
             var context = new TravelExpertsContext();
@@ -31,6 +40,25 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
 
             return customer;
 
+        }
+
+        public static async Task<bool> Add(Customers newCust)
+        {
+            bool isSucceed = false;
+            var context = new TravelExpertsContext();
+            context.Customers.Add(newCust);
+            try
+            {
+                int i = await context.SaveChangesAsync();
+                if (i > 0)
+                    isSucceed = true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return isSucceed;
         }
 
     }

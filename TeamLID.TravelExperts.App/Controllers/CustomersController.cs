@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TeamLID.TravelExperts.App.Models;
+using TeamLID.TravelExperts.App.Models.DataManager;
 using TeamLID.TravelExperts.Repository.Domain;
 
 namespace TeamLID.TravelExperts.App.Controllers
@@ -19,32 +21,88 @@ namespace TeamLID.TravelExperts.App.Controllers
             _context = context;
         }
 
+        // First time user try to access register page
+        [HttpGet]
         public ViewResult Register()
         {
             return View();
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(UserViewModel user)
         {
-            // TODO: 1. maybe do some validation. 2. create a Customers obj using info from UserViewModel, insert into DB
-
-            var newCust = new Customers
+            // 1. do server side validation. 2. if validation failed, go to register page with old inputs and error message.
+            if (!ValidateUser(user))
             {
-
-            };
-
-            return View();
+                ViewBag.msg = "validation failed, please fill in valid information and try again.";
+                return View("Register", user);
+            }
+            else
+            {
+                // 3. if validation passed, create a Customers obj from received UserViewModel, insert into DB
+                var newCust = new Customers
+                {
+                    CustLastName = user.CustLastName,
+                    CustFirstName = user.CustFirstName,
+                    CustBusPhone = Regex.Replace(user.CustBusPhone,@"[-.]","") ,  // remove . and -
+                    CustPostal = user.CustPostal.Replace('-',' '),  // T2G-1X6 => T2G 1X6
+                    CustHomePhone = user.CustHomePhone != null ? Regex.Replace(user.CustHomePhone, @"[-.]", "") : null,
+                    CustAddress = user.CustAddress,
+                    CustCity = user.CustCity,
+                    CustCountry = user.CustCountry,
+                    CustEmail = user.CustEmail,
+                    CustProv = user.CustProv.ToUpper(),  // ab => AB
+                    Password = user.Password,
+                    Username = user.Username
+                };
+                try
+                {
+                    // 4. if insert successfully, login user(create session), redirect to history page
+                    await CustomerProfileManager.Add(newCust);
+                    // TODO: login user (save user in session)
+                    return RedirectToAction("History", new { customerId = 1 });  // TODO: hard code, need change
+                }
+                catch (Exception e)
+                {
+                    // 5. if insert failed, go to register page with old inputs and error msg
+                    ViewBag.msg = "username is already in use, please login.";
+                    return View("Register", user);
+                }
+            }
         }
-        //int customerId
-        public async Task<IActionResult> History()
+
+        // TODO: ----- Louise -----
+        public async Task<IActionResult> History(int customerId)
         {
-            // TODO: use customer id to do some query, find out purchase history, make a IEnumerable<Packages>, and pass it into view to display
+            // TODO: use customer id to do some query, find out purchase history, make a IEnumerable<Packages> object as model, pass it into view to display
 
-            return View();
+            IEnumerable<Packages> model = null;  // instead of null, use actual query result
+
+            return View(model);
         }
+
+        // ------------------ Convenient Methods ---------------------
+
+        // Validate a UserViewModel object, return bool
+        private bool ValidateUser(UserViewModel user)
+        {
+            bool isValid = true;
+            var phoneRegex = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
+            var zipRegex = @"^[A-Za-z]\d[A-Za-z][-\ ]?\d[A-Za-z]\d$";
+
+            if (user.CustLastName == "" || user.CustFirstName == "" ||
+                user.Password != user.PasswordConfirm ||
+                !Regex.IsMatch(user.CustBusPhone, phoneRegex) ||
+                !Regex.IsMatch(user.CustPostal, zipRegex))
+            {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+
 
         // ------------------ Auto-generated Actions Below ------------------------
 
