@@ -1,76 +1,80 @@
 ﻿@model IEnumerable<TeamLID.TravelExperts.Repository.Domain.Agents>
 
+
+
+
+
 @{
     ViewData["Title"] = "Agents";
 }
 
-@*<h1>Index</h1>*@
 
-@* You shouldn't be able to create new if you're not an admin user  *@
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AgtFirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AgtMiddleInitial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AgtLastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AgtBusPhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AgtEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AgtPosition)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Agency)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgtFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgtMiddleInitial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgtLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgtBusPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgtEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgtPosition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Agency.AgencyId)
-            </td>
-            <td>
+<header class="container-header">
 
-                @* You shouldn't be able to edit if not a Admin user *@  
+    <div class="jumbotron jumbotron-fluid jumbotron-packages">
+        <div class="container">
+            <h1 class="display-4 contact-greetings h1-responsive">Contact Us</h1>
+            <hr class="my-4">
+        </div>
+    </div>
 
-                @* <a asp-action="Edit" asp-route-id="@item.AgentId">Edit</a> |*@
+</header>
 
-                <a asp-action="Details" asp-route-id="@item.AgentId">See Profile</a> 
 
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<main>
+    <!-- AGENCY -->
+    <div class="container">
+        <div class="main">
+            <div class="card-deck">
+                <div class="card package wow slideInLeft" data-wow-delay="500ms">
+                    <img src="~/images/agency1.jpg" class="card-img-top" alt="agency1">
+                    <div class="card-body">
+                        <h4 class="card-title h4-responsive"> <strong>Calgary</strong></h4>
+                        <p class="card-text">1155 8 Ave SW T2P 1N3</p>
+                    </div>
+                    <blockquote class="blockquote mb-0 card-body">
+                        <footer class="">
+                            <p class='lead'>Agency Phone: (403) 271-9873</p>
+                            <p class='lead'>Agency Fax: (403) 271-9872</p>
+                        </footer>
+                    </blockquote>
+                </div>
+                <div class="card package wow slideInRight" data-wow-delay="0.2s">
+                    <img src="~/images/agency2.jpg" class="card-img-top" alt="agency2">
+                    <div class="card-body">
+                        <h4 class="card-title h4-responsive"> <strong>Okotoks</strong></h4>
+                        <p class="card-text">110 Main Street T7R 3J5<p>
+                    </div>
+
+                    <blockquote class="blockquote mb-0 card-body">
+                        <footer class="">
+                            <p class='lead'>Agency Phone: (403) 563-2381</p>
+                            <p class='lead'>Agency Fax: (403) 563-2382</p>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGENTS -->
+    <br>
+    <h4 class="packages-display h3-responsive">Agents</h4>
+    <div style="width:50%;margin-left:auto; margin-right:auto">
+        @foreach (var item in Model)
+        {
+
+            <div class="card-deck" style="float:left">
+                <div class="card-body">
+                    <h4 class="card-title h4-responsive"> <strong>@Html.DisplayFor(modelItem => item.AgtFirstName) @Html.DisplayFor(modelItem => item.AgtMiddleInitial) @Html.DisplayFor(modelItem => item.AgtLastName)</strong></h4>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.AgtBusPhone)</p>
+                    <p><a href='mailto:@Html.DisplayFor(modelItem => item.AgtEmail)'>@Html.DisplayFor(modelItem => item.AgtEmail)</a></p>
+                </div>
+                <blockquote class="blockquote mb-0 card-body"></blockquote>
+            </div>
+        }
+    </div>
+
+    <br />
+</main>
