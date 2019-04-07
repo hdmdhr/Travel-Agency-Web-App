@@ -26,9 +26,11 @@ namespace TeamLID.TravelExperts.App.Controllers
             return View(await travelExpertsContext.ToListAsync());
         }
 
-        // GET: Bookings by customer
-        public ActionResult CustomerHistory(int id)
+        // GET: Bookings by customer (Customer Booking History)
+        public ActionResult CustomerHistory()
         {
+            // Change this to Id retrieved from sessions
+            int id = 143;
 
             var bookings = BookingsManager.GetAllBookingsByCustomer(id);
 
