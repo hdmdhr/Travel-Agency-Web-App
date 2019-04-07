@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace TeamLID.TravelExperts.App.Models
 {
@@ -11,10 +12,10 @@ namespace TeamLID.TravelExperts.App.Models
         [DisplayName("Title")]
         public string PkgName { get; set; }
 
-        [DisplayName("Start Date")]
+        [DataType(DataType.Date), DisplayName("Start Date")]
         public DateTime? PkgStartDate { get; set; }
 
-        [DisplayName("End Date")]
+        [DataType(DataType.Date), DisplayName("End Date")]
         public DateTime? PkgEndDate { get; set; }
 
         [DisplayName("Description")]
