@@ -45,10 +45,10 @@ namespace TeamLID.TravelExperts.App.Models
         [Required,DisplayName("Email")]
         public string CustEmail { get; set; }
 
-        [Required, MinLength(5), MaxLength(50)]
+        [Required, MinLength(5, ErrorMessage = "Username must be at least 5 digits."), MaxLength(50)]
         public string Username { get; set; }
         [Required]
-        [DataType(DataType.Password), MinLength(5), MaxLength(50)]
+        [DataType(DataType.Password), MinLength(5, ErrorMessage = "Password must be at least 5 digits."), MaxLength(50)]
         public string Password { get; set; }
         [DataType(DataType.Password),Compare(nameof(Password)),DisplayName("Password Confirm")]
         public string PasswordConfirm { get; set; }
