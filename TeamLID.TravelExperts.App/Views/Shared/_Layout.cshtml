@@ -299,12 +299,12 @@
                                 <!-- If user session exists, which means customer user has been authenticated, then show the links below -->
                                 <a class="dropdown-item" asp-controller="Customers" asp-action="Login">Logout</a>
                                 <a class="dropdown-item" asp-controller="Customers" asp-action="">Profile</a>
-                                <a class="dropdown-item" asp-controller="Customers" asp-action="">Booking/Order History</a>
+                                <a class="dropdown-item" asp-controller="Bookings" asp-action="CustomerHistory">Booking/Order History</a>
                             </div>
                         </li>
                         @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a>
-        </li>*@
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a>
+                        </li>*@
                     </ul>
                 </div>
             </div>

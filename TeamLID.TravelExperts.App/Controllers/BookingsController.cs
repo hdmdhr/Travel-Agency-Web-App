@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using TeamLID.TravelExperts.App.Models.DataManager;
 using TeamLID.TravelExperts.Repository.Domain;
 
 namespace TeamLID.TravelExperts.App.Controllers
@@ -23,6 +24,18 @@ namespace TeamLID.TravelExperts.App.Controllers
         {
             var travelExpertsContext = _context.Bookings.Include(b => b.Customer).Include(b => b.Package).Include(b => b.TripType);
             return View(await travelExpertsContext.ToListAsync());
+        }
+
+        // GET: Bookings by customer (Customer Booking History)
+        public ActionResult CustomerHistory()
+        {
+            // Change this to Id retrieved from sessions
+            int id = 143;
+
+            var bookings = BookingsManager.GetAllBookingsByCustomer(id);
+
+            return View(bookings);
+
         }
 
         // GET: Bookings/Details/5
@@ -45,6 +58,8 @@ namespace TeamLID.TravelExperts.App.Controllers
 
             return View(bookings);
         }
+
+
 
         // GET: Bookings/Create
         public IActionResult Create()
