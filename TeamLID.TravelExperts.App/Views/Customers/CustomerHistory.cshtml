@@ -36,45 +36,65 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.TravelerCount)
                                 </th>
+                                @*<th>
+                                    @Html.DisplayNameFor(model => model.CustomerId)
+                                </th>*@
                                 <th>
                                     @Html.DisplayNameFor(model => model.TripTypeId)
                                 </th>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PackageId)
+                                </td>
                                 <th>
-                                    Base Prices
+                                    @Html.DisplayNameFor(model => model.Price)
                                 </th>
-
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                        @foreach (var item in Model)
                             {
-                                <tr class="text-center">
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.BookingDate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.BookingNo)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TravelerCount)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TripTypeId)
-                                    </td>
-                                    <td>
-                                        <ul>
-                                            @foreach (var bookingDetail in item.BookingDetails)
-                                            {
-                                                <li>
-                                                    @Html.DisplayFor(modelItem => bookingDetail.BasePrice)
-                                                </li>
-                                            }
-                                        </ul>
-                                    </td>
-                                </tr>
+                            <tr class="text-center">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BookingDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BookingNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TravelerCount)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.CustomerId)
+                                </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TripTypeId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PackageId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    @*<a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |*@
+                                    @*<a asp-action="Details" asp-route-id="@item.BookingId">Details</a>*@
+                                    @*|
+                                    <a asp-action="Delete" asp-route-id="@item.PackageId">Delete</a>*@
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
+
+                    <br />
+
+                    <span class="justify-content-end text-right"> 
+
+                        <p> <strong>Total Owing</strong>: CAD$ @Model.Sum(p => p.Price)</p>  
+                                            
+                    </span>
+
                 </div>
             </div>
         </div>

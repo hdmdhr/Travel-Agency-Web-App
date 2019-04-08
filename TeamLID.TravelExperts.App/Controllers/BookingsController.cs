@@ -48,6 +48,15 @@ namespace TeamLID.TravelExperts.App.Controllers
 
         }
 
+        public decimal TotalOwing(decimal amount)
+        {
+            decimal total = 0;
+
+            total += amount;
+
+            return total;
+        }
+
         // GET: Bookings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
