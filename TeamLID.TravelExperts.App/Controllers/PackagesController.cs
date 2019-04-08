@@ -35,7 +35,7 @@ namespace TeamLID.TravelExperts.App.Controllers
                     PkgStartDate = pck.PkgStartDate,
                     PkgEndDate = pck.PkgEndDate,
                     PkgDesc = pck.PkgDesc,
-                    PkgBasePrice = pck.PkgBasePrice.ToString("c") 
+                    PkgBasePrice = Convert.ToString(Math.Round((decimal)(pck.PkgBasePrice + pck.PkgAgencyCommission), 0))
                 }).ToList();
 
             return View(packages);

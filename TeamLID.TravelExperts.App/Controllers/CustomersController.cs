@@ -135,7 +135,7 @@ namespace TeamLID.TravelExperts.App.Controllers
                         CustomerId = bk.Customer.CustFirstName,
                         TripTypeId = bk.TripType.Ttname,
                         PackageId = bk.Package.PkgName,
-                        Price = bk.Package.PkgBasePrice,
+                        Price = Math.Round((decimal)(bk.Package.PkgBasePrice + bk.Package.PkgAgencyCommission), 0),
                         //Total = TotalOwing(bk.Package.PkgBasePrice).ToString("c")
                     }).ToList();
 
@@ -147,6 +147,28 @@ namespace TeamLID.TravelExperts.App.Controllers
                 //return RedirectToAction("Login");
             }
         }
+
+        public ActionResult BookingDetail(int id)
+        {
+            var booking = BookingsManager.Find(id);
+
+            var a = new BookingsModel
+            {
+                BookingId = booking.BookingId,
+                BookingNo = booking.BookingNo,
+                PkgStartDate = booking.Package.PkgStartDate,
+                PkgEndDate = booking.Package.PkgEndDate,
+                TravelerCount = booking.TravelerCount,
+                CustomerId = booking.Customer.CustFirstName,
+                TripTypeId = booking.TripType.Ttname,
+                PkgDesc = booking.Package.PkgDesc,
+                PackageId = booking.Package.PkgName,
+                Price = Math.Round((decimal)(booking.Package.PkgBasePrice + booking.Package.PkgAgencyCommission), 0),
+            };
+
+            return View(a);
+        }
+
 
         //This wasn't used eventually, TODO: Nuke it
         public decimal TotalOwing(decimal amount)

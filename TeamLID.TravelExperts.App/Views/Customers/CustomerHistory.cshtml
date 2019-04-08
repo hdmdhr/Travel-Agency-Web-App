@@ -78,7 +78,7 @@
                                 </td>
                                 <td>
                                     @*<a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |*@
-                                    @*<a asp-action="Details" asp-route-id="@item.BookingId">Details</a>*@
+                                    <a asp-action="BookingDetail" asp-route-id="@item.BookingId"><button class="btn btn-outline-primary"> View Booking </button></a>
                                     @*|
                                     <a asp-action="Delete" asp-route-id="@item.PackageId">Delete</a>*@
                                 </td>
@@ -90,7 +90,7 @@
                     <br />
                     <span class="justify-content-end text-right" style="padding-left: 100px;">
 
-                        <p> <strong>Total Owing</strong>: CAD$ @Model.Sum(p => p.Price)</p>
+                        <p> <strong>Total Owing</strong>: CAD$ @Model.Sum(p => p.Price).ToString("c0")</p>
 
                     </span>
                     <br />

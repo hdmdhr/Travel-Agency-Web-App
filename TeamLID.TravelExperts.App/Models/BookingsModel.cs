@@ -16,6 +16,15 @@ namespace TeamLID.TravelExperts.App.Models
         [DataType(DataType.Date), DisplayName("Booking Date")]
         public DateTime? BookingDate { get; set; }
 
+        [DataType(DataType.Date), DisplayName("Trip Start Date")]
+        public DateTime? PkgStartDate { get; set; }
+
+        [DataType(DataType.Date), DisplayName("Trip End Date")]
+        public DateTime? PkgEndDate { get; set; }
+
+        [DisplayName("Trip Description")]
+        public string PkgDesc { get; set; }
+
         [DisplayName("Booking Number")]
         public string BookingNo { get; set; }
 
@@ -31,7 +40,7 @@ namespace TeamLID.TravelExperts.App.Models
         [DisplayName("Package Booked")]
         public string PackageId { get; set; }
 
-        [DisplayName("Price (CAD$)")]
+        [DataType(DataType.Currency), DisplayName("Price (CAD$)")]
         public decimal Price { get; set; }
 
         [DisplayName("Total Owing")]

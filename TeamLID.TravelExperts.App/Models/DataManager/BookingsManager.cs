@@ -22,5 +22,22 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
             return bookings;
 
         }
+
+        public static Bookings Find(int id)
+        {
+            var context = new TravelExpertsContext();
+
+            // find the domain entity with this context that has the same id as 
+            // the entity passed
+            var booking = context.Bookings
+                .Include(customer => customer.Customer)
+                .Include(trip => trip.TripType)
+                .Include(package => package.Package)
+                .Include(bookingDetail => bookingDetail.BookingDetails)
+                .SingleOrDefault(bk => bk.BookingId == id);
+
+            return booking;
+
+        }
     }
 }
