@@ -22,5 +22,6 @@ namespace TeamLID.TravelExperts.Repository.Domain
         public virtual Packages Package { get; set; }
         public virtual TripTypes TripType { get; set; }
         public virtual ICollection<BookingDetails> BookingDetails { get; set; }
+
     }
 }

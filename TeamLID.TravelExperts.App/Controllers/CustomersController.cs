@@ -141,6 +141,7 @@ namespace TeamLID.TravelExperts.App.Controllers
 
                 return View(bookings);
 
+
             } else {
                 return View("Login");
                 //return RedirectToAction("Login");
@@ -156,9 +157,6 @@ namespace TeamLID.TravelExperts.App.Controllers
 
             return total;
         }
-
-
-        // ------------------ Convenient Methods ---------------------
 
         // Validate a UserViewModel object, return bool
         private bool ValidateUser(UserViewModel user)
