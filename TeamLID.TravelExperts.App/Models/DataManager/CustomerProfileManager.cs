@@ -9,7 +9,7 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
     public class CustomerProfileManager
     {
 
-        /// <summary>
+        ///// <summary>
         /// Find a certain customer using id.
         /// </summary>
         /// <param name="id"></param>
@@ -28,6 +28,7 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
 
         }
 
+        ////
         /// <summary>
         /// Add a new customer to database.
         /// </summary>
@@ -52,7 +53,12 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
             return isSucceed;
         }
 
-
+        /// <summary>
+        /// Compares the login.
+        /// </summary>
+        /// <returns>The login.</returns>
+        /// <param name="username">Username.</param>
+        /// <param name="password">Password.</param>
         public static async Task<Customers> CompareLogin(string username, string password)
         {
 
