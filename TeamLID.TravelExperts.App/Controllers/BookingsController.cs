@@ -41,8 +41,7 @@ namespace TeamLID.TravelExperts.App.Controllers
                     BookingNo = bk.BookingNo,
                     TravelerCount = bk.TravelerCount,
                     CustomerId = bk.Customer.CustFirstName,
-                    TripTypeId = bk.TripType.Ttname,
-                    PackageId = bk.Package.PkgName                            
+                    TripTypeId = bk.TripType.Ttname,                           
                 }).ToList();
                 
             return View(bookings);

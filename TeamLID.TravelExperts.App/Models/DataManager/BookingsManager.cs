@@ -15,7 +15,8 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
                 .Include(customer => customer.Customer)
                 .Include(trip => trip.TripType)
                 .Include(package => package.Package)
-                .Where(bk => bk.CustomerId == customerId)
+                .Include(bookingDetail => bookingDetail.BookingDetails)
+                .Where(booking => booking.CustomerId == customerId)
                 .ToList();
                                         
             return bookings;

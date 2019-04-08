@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using TeamLID.TravelExperts.Repository.Domain;
 
 namespace TeamLID.TravelExperts.App.Models
 {
@@ -20,10 +22,11 @@ namespace TeamLID.TravelExperts.App.Models
         [DisplayName("Customer")]
         public string CustomerId { get; set; }
 
-        [DisplayName("Trip Type Number")]
+        [DisplayName("Trip Type")]
         public string TripTypeId { get; set; }
 
-        [DisplayName("Package Booked")]
-        public string PackageId { get; set; }
+        public ICollection<BookingDetails> BookingDetails { get; set; }
+
+
     }
 }

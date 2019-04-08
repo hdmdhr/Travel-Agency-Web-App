@@ -134,10 +134,11 @@ namespace TeamLID.TravelExperts.App.Controllers
                         TravelerCount = bk.TravelerCount,
                         CustomerId = bk.Customer.CustFirstName,
                         TripTypeId = bk.TripType.Ttname,
-                        PackageId = bk.Package.PkgName
+                        BookingDetails = bk.BookingDetails
                     }).ToList();
 
                 return View(bookings);
+
 
             } else {
                 return View("Login");
@@ -145,22 +146,6 @@ namespace TeamLID.TravelExperts.App.Controllers
             }
         }
 
-
-        // TODO: ----- Louise -----
-
-        //This isn't necessary any longer you can check the customer history above
-        // but if you feel like writing some code, by all means go ahead...
-
-        //public async Task<IActionResult> History(int customerId)
-        //{
-        //    // TODO: use customer id to do some query, find out purchase history, make a IEnumerable<Packages> object as model, pass it into view to display
-
-        //    IEnumerable<Packages> model = null;  // instead of null, use actual query result
-
-        //    return View(model);
-        //}
-
-        // ------------------ Convenient Methods ---------------------
 
         // Validate a UserViewModel object, return bool
         private bool ValidateUser(UserViewModel user)
