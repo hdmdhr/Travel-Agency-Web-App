@@ -1,0 +1,81 @@
+﻿@model TeamLID.TravelExperts.Repository.Domain.Customers
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+
+<main class="text-center">
+    <h1>Your Profile</h1>
+
+    <hr />
+    <dl class="row w-75 mx-auto">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CustFirstName)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.CustFirstName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CustLastName)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.CustLastName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CustAddress)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.CustAddress)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CustCity)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.CustCity)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CustProv)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.CustProv)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CustPostal)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.CustPostal)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CustCountry)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.CustCountry)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CustHomePhone)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.CustHomePhone)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CustBusPhone)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.CustBusPhone)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CustEmail)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.CustEmail)
+        </dd>
+    </dl>
+    <div class="text-center w-75 mx-auto">
+        @*Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })*@
+        <a asp-controller="Customers" asp-action="Edit" asp-route-id="104" class="mr-3"><button class="btn btn-outline-primary">Edit</button></a>
+        |
+        <a asp-controller="Customers" asp-action="CustomerHistory" class="ml-3"><button class="btn btn-outline-primary">Back to hitory</button></a>
+    </div>
+</main>
+

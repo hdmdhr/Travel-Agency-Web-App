@@ -47,7 +47,7 @@ namespace TeamLID.TravelExperts.App.Controllers
                     CustLastName = user.CustLastName,
                     CustFirstName = user.CustFirstName,
                     CustBusPhone = Regex.Replace(user.CustBusPhone,@"[-.]","") ,  // remove . and -
-                    CustPostal = user.CustPostal.Replace('-',' '),  // T2G-1X6 => T2G 1X6
+                    CustPostal = user.CustPostal.Replace('-',' ').ToUpper(),  // T2G-1X6 => T2G 1X6
                     CustHomePhone = user.CustHomePhone != null ? Regex.Replace(user.CustHomePhone, @"[-.]", "") : null,
                     CustAddress = user.CustAddress,
                     CustCity = user.CustCity,
@@ -59,9 +59,9 @@ namespace TeamLID.TravelExperts.App.Controllers
                 };
                 try
                 {
-                    // 4. if insert successfully, login user(create session), redirect to history page
+                    // 4. if insert successfully, go to login page show success msg
                     await CustomerProfileManager.Add(newCust);
-                    //return RedirectToAction("Login", "Login");
+                    ViewBag.success = "Congratulations! Your account is active now, please log in.";
                     return View("Login");
                 }
                 catch (Exception e)
@@ -148,6 +148,16 @@ namespace TeamLID.TravelExperts.App.Controllers
             }
         }
 
+        public async Task<IActionResult> Profile()
+        {
+            // if try access profile without login, go to login page
+            var loginCust = HttpContext.Session.GetObject<Customers>("login");
+            if (loginCust == null)
+                return View("Login");
+            else
+                return View(loginCust);
+        }
+
         //This wasn't used eventually, TODO: Nuke it
         public decimal TotalOwing(decimal amount)
         {
@@ -158,6 +168,8 @@ namespace TeamLID.TravelExperts.App.Controllers
             return total;
         }
 
+        // Convenient Methods -------
+    
         // Validate a UserViewModel object, return bool
         private bool ValidateUser(UserViewModel user)
         {
