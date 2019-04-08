@@ -61,19 +61,21 @@
     <!-- AGENTS -->
     <br>
     <h4 class="packages-display h3-responsive">Agents</h4>
-    <div style="width:50%;margin-left:auto; margin-right:auto">
+    <div style="width: 50%; margin-left: auto; margin-right: auto">
+        <div class="card-deck" style="float:left">
+
         @foreach (var item in Model)
         {
 
-            <div class="card-deck" style="float:left">
-                <div class="card-body">
-                    <h4 class="card-title h4-responsive"> <strong>@Html.DisplayFor(modelItem => item.AgtFirstName) @Html.DisplayFor(modelItem => item.AgtMiddleInitial) @Html.DisplayFor(modelItem => item.AgtLastName)</strong></h4>
-                    <p class="card-text">@Html.DisplayFor(modelItem => item.AgtBusPhone)</p>
-                    <p><a href='mailto:@Html.DisplayFor(modelItem => item.AgtEmail)'>@Html.DisplayFor(modelItem => item.AgtEmail)</a></p>
-                </div>
-                <blockquote class="blockquote mb-0 card-body"></blockquote>
+            <div class="card-body">
+                <h4 class="card-title h4-responsive"> <strong>@Html.DisplayFor(modelItem => item.AgtFirstName) @Html.DisplayFor(modelItem => item.AgtMiddleInitial) @Html.DisplayFor(modelItem => item.AgtLastName)</strong></h4>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.AgtBusPhone)</p>
+                <p><a href='mailto:@Html.DisplayFor(modelItem => item.AgtEmail)'>@Html.DisplayFor(modelItem => item.AgtEmail)</a></p>
             </div>
+            <blockquote class="blockquote mb-0 card-body"></blockquote>
         }
+        </div>
+
     </div>
 
     <br />
