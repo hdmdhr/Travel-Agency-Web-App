@@ -53,7 +53,7 @@
                         </thead>
                         <tbody>
                         @foreach (var item in Model)
-                            {
+                        {
                             <tr class="text-center">
                                 <td>
                                     @Html.DisplayFor(modelItem => item.BookingDate)
@@ -83,18 +83,18 @@
                                     <a asp-action="Delete" asp-route-id="@item.PackageId">Delete</a>*@
                                 </td>
                             </tr>
-                            }
+                        }
                         </tbody>
                     </table>
-
                     <br />
+                    <br />
+                    <span class="justify-content-end text-right" style="padding-left: 100px;">
 
-                    <span class="justify-content-end text-right"> 
+                        <p> <strong>Total Owing</strong>: CAD$ @Model.Sum(p => p.Price)</p>
 
-                        <p> <strong>Total Owing</strong>: CAD$ @Model.Sum(p => p.Price)</p>  
-                                            
                     </span>
-
+                    <br />
+                    <br />
                 </div>
             </div>
         </div>

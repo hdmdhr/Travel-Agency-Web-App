@@ -8,6 +8,9 @@ using TeamLID.TravelExperts.Repository.Domain;
 
 namespace TeamLID.TravelExperts.App.Models
 {
+    /// <summary>
+    /// User view model.
+    /// </summary>
     public class UserViewModel
     {
         public int CustomerId { get; set; }

@@ -6,6 +6,9 @@ using TeamLID.TravelExperts.Repository.Domain;
 
 namespace TeamLID.TravelExperts.App.Models
 {
+    /// <summary>
+    /// Booking model
+    /// </summary>
     public class BookingsModel
     {
         public int BookingId { get; set; }
