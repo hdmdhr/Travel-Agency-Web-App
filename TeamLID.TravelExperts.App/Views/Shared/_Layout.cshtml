@@ -67,9 +67,9 @@
         /* } */
 
         /*.carousel-inner > .item > img {
-    width: 1200px;
-    height: 500px;
-}*/
+            width: 1200px;
+            height: 500px;
+        }*/
 
 
         .comp-contacts > ul, .register-heading, .btn, input[placeholder], .footer, p {
@@ -167,9 +167,9 @@
             }
 
         /* .container-header {
-    position: relative;
-    padding: 0;
-} */
+            position: relative;
+            padding: 0;
+        } */
     .jumbotron-register { background-image: url('https://images.pexels.com/photos/533444/pexels-photo-533444.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); 
             background-size: cover; 
             color: black; 
@@ -237,25 +237,7 @@
             font-family: 'Metrophobic', sans-serif;
             border-radius: 15px;
         }
-
-        .afternoon {
-            background: #D2E5F6;
-            padding: 10px;
-            max-width: 200px;
-            color: #F3F9F9;
-            font-family: 'Metrophobic', sans-serif;
-            border-radius: 15px;
-        }
-
-        .evening {
-            background: #475761;
-            padding: 10px;
-            max-width: 200px;
-            color: #F3F9F9;
-            font-family: 'Metrophobic', sans-serif;
-            border-radius: 15px;
-        }
-
+        
         .parallax {
             /* Set a specific height */
             height: 426px;
@@ -324,9 +306,9 @@
             @{var loginCust = Context.Session.GetObject<Customers>("login");}
             @if (loginCust != null)
             {
-                var greetMsg = "Hello, " + loginCust.CustFirstName;
+                @*var greetMsg = "Hello, " + loginCust.CustFirstName;*@
             <h1 class="display-4 register-greetings h1-responsive text-center">
-                @greetMsg
+                @*@greetMsg*@
             </h1>
     }
 
