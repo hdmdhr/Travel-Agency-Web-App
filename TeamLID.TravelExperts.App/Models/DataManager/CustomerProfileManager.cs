@@ -8,20 +8,6 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
 {
     public class CustomerProfileManager
     {
-        // TODO: Louise - get a customer's all previous bookings using id
-        //public static List<> GetAllBookingsByCustomer(int custId) { }
-
-        // Below is an example Louise can refer to ↓
-
-        //public static List<Asset> GetAllByAssetType(int assetTypeId)
-        //{
-        //    var context = new AssetsContext();
-        //    var assets = context.Assets.
-        //        Include(asset => asset.AssetType).
-        //        Where(ast => ast.Id == assetTypeId).ToList();
-
-        //    return assets;
-        //}
 
         /// <summary>
         /// Find a certain customer using id.

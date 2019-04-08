@@ -3,6 +3,9 @@ using System.ComponentModel;
 
 namespace TeamLID.TravelExperts.App.Models
 {
+    /// <summary>
+    /// Customer view model.
+    /// </summary>
     public class CustomerViewModel
     {
         public int CustomerId { get; set; }

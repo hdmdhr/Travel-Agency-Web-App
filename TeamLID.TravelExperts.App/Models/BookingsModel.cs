@@ -6,6 +6,9 @@ using TeamLID.TravelExperts.Repository.Domain;
 
 namespace TeamLID.TravelExperts.App.Models
 {
+    //// <summary>
+    /// Booking model
+    /// </summary>
     public class BookingsModel
     {
         public int BookingId { get; set; }
@@ -28,7 +31,7 @@ namespace TeamLID.TravelExperts.App.Models
         [DisplayName("Package Booked")]
         public string PackageId { get; set; }
 
-        [DisplayName("CAD$ Price")]
+        [DisplayName("Price (CAD$)")]
         public decimal Price { get; set; }
 
         [DisplayName("Total Owing")]
