@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TeamLID.TravelExperts.App.Models
 {
+    /// <summary>
+    /// Packages model.
+    /// </summary>
     public class PackagesModel
     {
         public int PackageId { get; set; }
@@ -21,7 +24,7 @@ namespace TeamLID.TravelExperts.App.Models
         [DisplayName("Description")]
         public string PkgDesc { get; set; }
 
-        [DisplayName("Base Price")]
+        [DisplayName("Price (CAD$)")]
         public string PkgBasePrice { get; set; }
     }
 }
