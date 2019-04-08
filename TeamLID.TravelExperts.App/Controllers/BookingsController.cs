@@ -28,6 +28,7 @@ namespace TeamLID.TravelExperts.App.Controllers
         }
 
         // GET: Bookings by customer (Customer Booking History)
+        // This has been moved to CustomersController
         public ActionResult CustomerHistory()
         {
             // Change this to Id retrieved from sessions
@@ -41,7 +42,8 @@ namespace TeamLID.TravelExperts.App.Controllers
                     BookingNo = bk.BookingNo,
                     TravelerCount = bk.TravelerCount,
                     CustomerId = bk.Customer.CustFirstName,
-                    TripTypeId = bk.TripType.Ttname,                           
+                    TripTypeId = bk.TripType.Ttname,
+                    PackageId = bk.Package.PkgName                            
                 }).ToList();
                 
             return View(bookings);

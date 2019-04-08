@@ -1,17 +1,15 @@
 ﻿@model IEnumerable<TeamLID.TravelExperts.Repository.Domain.Agents>
 
 
-
-
-
 @{
-    ViewData["Title"] = "Agents";
+    ViewData["Title"] = "Contact";
 }
 
 
 <header class="container-header">
+   
 
-    <div class="jumbotron jumbotron-fluid jumbotron-packages">
+    <div class="jumbotron jumbotron-fluid jumbotron-contact">
         <div class="container">
             <h1 class="display-4 contact-greetings h1-responsive">Contact Us</h1>
             <hr class="my-4">
@@ -20,63 +18,67 @@
 
 </header>
 
-
-
 <main>
     <!-- AGENCY -->
     <div class="container">
-        <div class="main">
-            <div class="card-deck">
-                <div class="card package wow slideInLeft" data-wow-delay="500ms">
-                    <img src="~/images/agency1.jpg" class="card-img-top" alt="agency1">
-                    <div class="card-body">
-                        <br />
-                        <h4 class="card-title h4-responsive"> <strong>Calgary</strong></h4>
-                        <p class="card-text">1155 8 Ave SW T2P 1N3</p>
+
+        <div class="contact-main">
+
+            <div class="agent-box">
+                <br />
+                <br />
+                <h2 class="agent-contacts">Our Offices</h2>
+                <div class="main">
+                    <div class="card-deck">
+                        <div class="card package wow slideInLeft" data-wow-delay="500ms">
+                            <img src="~/images/agency1.jpg" class="card-img-top" alt="agency1">
+                            <div class="card-body">
+                                <br />
+                                <h4 class="card-title h4-responsive"> <strong>Calgary</strong></h4>
+                                <p class="card-text">1155 8 Ave SW T2P 1N3</p>
+                            </div>
+                            <blockquote class="blockquote mb-0 card-body">
+                                <footer class="">
+                                    <p class='lead'>Agency Phone: (403) 271-9873</p>
+                                    <p class='lead'>Agency Fax: (403) 271-9872</p>
+                                </footer>
+                            </blockquote>
+                        </div>
+                        <div class="card package wow slideInRight" data-wow-delay="0.2s">
+                            <img src="~/images/agency2.jpg" class="card-img-top" alt="agency2">
+                            <div class="card-body">
+                                <h4 class="card-title h4-responsive"> <strong>Okotoks</strong></h4>
+                                <p class="card-text">110 Main Street T7R 3J5<p>
+                            </div>
+                            <blockquote class="blockquote mb-0 card-body">
+                                <footer class="">
+                                    <p class='lead'>Agency Phone: (403) 563-2381</p>
+                                    <p class='lead'>Agency Fax: (403) 563-2382</p>
+                                </footer>
+                            </blockquote>
+                        </div>
                     </div>
-                    <blockquote class="blockquote mb-0 card-body">
-                        <footer class="">
-                            <p class='lead'>Agency Phone: (403) 271-9873</p>
-                            <p class='lead'>Agency Fax: (403) 271-9872</p>
-                        </footer>
-                    </blockquote>
                 </div>
-                <div class="card package wow slideInRight" data-wow-delay="0.2s">
-                    <img src="~/images/agency2.jpg" class="card-img-top" alt="agency2">
-                    <div class="card-body">
-                        <h4 class="card-title h4-responsive"> <strong>Okotoks</strong></h4>
-                        <p class="card-text">110 Main Street T7R 3J5<p>
-                    </div>
-                    <blockquote class="blockquote mb-0 card-body">
-                        <footer class="">
-                            <p class='lead'>Agency Phone: (403) 563-2381</p>
-                            <p class='lead'>Agency Fax: (403) 563-2382</p>
-                        </footer>
-                    </blockquote>
+
+                <br />
+                <br />
+                <h5 class="description">You can also have a chat with any of our agents to tailor your travel experience.</h5>
+                <hr />
+
+                <h4 class="packages-display h3-responsive">Agents</h4>
+                <div class="card-deck">
+                    @foreach (var item in Model)
+                    {
+                        <div class="card-body">
+                            <h4 class="card-title h4-responsive"> <strong>@Html.DisplayFor(modelItem => item.AgtFirstName) @Html.DisplayFor(modelItem => item.AgtMiddleInitial) @Html.DisplayFor(modelItem => item.AgtLastName)</strong></h4>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.AgtBusPhone)</p>
+                            <p><a href='mailto:@Html.DisplayFor(modelItem => item.AgtEmail)'>@Html.DisplayFor(modelItem => item.AgtEmail)</a></p>
+                        </div>
+                        <blockquote class="blockquote mb-0 card-body"></blockquote>
+                    }
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- AGENTS -->
-    <br>
-    <h4 class="packages-display h3-responsive">Agents</h4>
-    <div style="width: 50%; margin-left: auto; margin-right: auto">
-        <div class="card-deck" style="float:left">
-
-        @foreach (var item in Model)
-        {
-
-            <div class="card-body">
-                <h4 class="card-title h4-responsive"> <strong>@Html.DisplayFor(modelItem => item.AgtFirstName) @Html.DisplayFor(modelItem => item.AgtMiddleInitial) @Html.DisplayFor(modelItem => item.AgtLastName)</strong></h4>
-                <p class="card-text">@Html.DisplayFor(modelItem => item.AgtBusPhone)</p>
-                <p><a href='mailto:@Html.DisplayFor(modelItem => item.AgtEmail)'>@Html.DisplayFor(modelItem => item.AgtEmail)</a></p>
-            </div>
-            <blockquote class="blockquote mb-0 card-body"></blockquote>
-        }
-        </div>
-
-    </div>
-
-    <br />
 </main>
