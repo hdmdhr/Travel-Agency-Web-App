@@ -158,7 +158,6 @@ namespace TeamLID.TravelExperts.App.Controllers
             return total;
         }
 
-
         // Validate a UserViewModel object, return bool
         private bool ValidateUser(UserViewModel user)
         {
