@@ -89,7 +89,7 @@ namespace TeamLID.TravelExperts.App.Controllers
             var cust = await CustomerProfileManager.CompareLogin(login.username, login.password);
 
             if (cust != null)
-            { 
+            {
                 // if username and pin match, add user to session
                 HttpContext.Session.SetObject("login", cust);
                 // direct to history page, with parameter customerId
@@ -135,7 +135,7 @@ namespace TeamLID.TravelExperts.App.Controllers
                         CustomerId = bk.Customer.CustFirstName,
                         TripTypeId = bk.TripType.Ttname,
                         PackageId = bk.Package.PkgName,
-                        Price = bk.Package.PkgBasePrice,
+                        Price = Math.Round((decimal)(bk.Package.PkgBasePrice + bk.Package.PkgAgencyCommission), 0),
                         //Total = TotalOwing(bk.Package.PkgBasePrice).ToString("c")
                     }).ToList();
 
@@ -148,6 +148,7 @@ namespace TeamLID.TravelExperts.App.Controllers
             }
         }
 
+
         public async Task<IActionResult> Profile()
         {
             // if try access profile without login, go to login page
@@ -158,6 +159,27 @@ namespace TeamLID.TravelExperts.App.Controllers
                 return View(loginCust);
         }
 
+
+        public ActionResult BookingDetail(int id)
+        {
+            var booking = BookingsManager.Find(id);
+
+            var a = new BookingsModel
+            {
+                BookingId = booking.BookingId,
+                BookingNo = booking.BookingNo,
+                PkgStartDate = booking.Package.PkgStartDate,
+                PkgEndDate = booking.Package.PkgEndDate,
+                TravelerCount = booking.TravelerCount,
+                CustomerId = booking.Customer.CustFirstName,
+                TripTypeId = booking.TripType.Ttname,
+                PkgDesc = booking.Package.PkgDesc,
+                PackageId = booking.Package.PkgName,
+                Price = Math.Round((decimal)(booking.Package.PkgBasePrice + booking.Package.PkgAgencyCommission), 0),
+            };
+
+            return View(a);
+        }
         //This wasn't used eventually, TODO: Nuke it
         public decimal TotalOwing(decimal amount)
         {
@@ -169,7 +191,7 @@ namespace TeamLID.TravelExperts.App.Controllers
         }
 
         // Convenient Methods -------
-    
+
         // Validate a UserViewModel object, return bool
         private bool ValidateUser(UserViewModel user)
         {
@@ -226,7 +248,7 @@ namespace TeamLID.TravelExperts.App.Controllers
         }
 
         // POST: Customers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -260,7 +282,7 @@ namespace TeamLID.TravelExperts.App.Controllers
         }
 
         // POST: Customers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
