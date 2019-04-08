@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TeamLID.TravelExperts.App.Models
 {
+    /// <summary>
+    /// Booking model
+    /// </summary>
     public class BookingsModel
     {
         public int BookingId { get; set; }

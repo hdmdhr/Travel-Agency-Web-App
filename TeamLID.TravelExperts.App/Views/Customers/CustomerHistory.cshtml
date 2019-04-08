@@ -53,49 +53,49 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach (var item in Model)
-                            {
-                            <tr class="text-center">
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.BookingDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.BookingNo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TravelerCount)
-                                </td>
-                                @*<td>
-                                    @Html.DisplayFor(modelItem => item.CustomerId)
-                                </td>*@
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TripTypeId)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PackageId)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Price)
-                                </td>
-                                <td>
-                                    @*<a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |*@
-                                    @*<a asp-action="Details" asp-route-id="@item.BookingId">Details</a>*@
-                                    @*|
-                                    <a asp-action="Delete" asp-route-id="@item.PackageId">Delete</a>*@
-                                </td>
-                            </tr>
-                            }
+                            @foreach (var item in Model)
+            {
+                <tr class="text-center">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookingDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookingNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TravelerCount)
+                    </td>
+                    @*<td>
+            @Html.DisplayFor(modelItem => item.CustomerId)
+        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TripTypeId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PackageId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @*<a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |*@
+                        @*<a asp-action="Details" asp-route-id="@item.BookingId">Details</a>*@
+                        @*|
+            <a asp-action="Delete" asp-route-id="@item.PackageId">Delete</a>*@
+                    </td>
+                </tr>
+}
                         </tbody>
                     </table>
-
                     <br />
+                    <br />
+                    <span class="justify-content-end text-right" style="padding-left: 100px;">
 
-                    <span class="justify-content-end text-right"> 
+                        <p> <strong>Total Owing</strong>: CAD$ @Model.Sum(p => p.Price)</p>
 
-                        <p> <strong>Total Owing</strong>: CAD$ @Model.Sum(p => p.Price)</p>  
-                                            
                     </span>
-
+                    <br />
+                    <br />
                 </div>
             </div>
         </div>
