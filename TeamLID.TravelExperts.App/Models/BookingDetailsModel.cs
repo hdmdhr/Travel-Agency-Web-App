@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace TeamLID.TravelExperts.App.Models
 {
+    /// <summary>
+    /// Booking details model.
+    /// </summary>
+    /// Not used. TODO: Nuke
     public class BookingDetailsModel
     {
 
