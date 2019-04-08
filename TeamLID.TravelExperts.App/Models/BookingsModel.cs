@@ -20,10 +20,16 @@ namespace TeamLID.TravelExperts.App.Models
         [DisplayName("Customer")]
         public string CustomerId { get; set; }
 
-        [DisplayName("Trip Type Number")]
+        [DisplayName("Trip Type")]
         public string TripTypeId { get; set; }
 
         [DisplayName("Package Booked")]
         public string PackageId { get; set; }
+
+        [DisplayName("CAD$ Price")]
+        public decimal Price { get; set; }
+
+        [DisplayName("Total Owing")]
+        public string Total { get; set; }
     }
 }

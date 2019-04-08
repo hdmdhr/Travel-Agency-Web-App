@@ -134,7 +134,9 @@ namespace TeamLID.TravelExperts.App.Controllers
                         TravelerCount = bk.TravelerCount,
                         CustomerId = bk.Customer.CustFirstName,
                         TripTypeId = bk.TripType.Ttname,
-                        PackageId = bk.Package.PkgName
+                        PackageId = bk.Package.PkgName,
+                        Price = bk.Package.PkgBasePrice,
+                        //Total = TotalOwing(bk.Package.PkgBasePrice).ToString("c")
                     }).ToList();
 
                 return View(bookings);
@@ -143,6 +145,16 @@ namespace TeamLID.TravelExperts.App.Controllers
                 return View("Login");
                 //return RedirectToAction("Login");
             }
+        }
+
+        //This wasn't used eventually, TODO: Nuke it
+        public decimal TotalOwing(decimal amount)
+        {
+            decimal total = 0;
+
+            total += amount;
+
+            return total;
         }
 
 
