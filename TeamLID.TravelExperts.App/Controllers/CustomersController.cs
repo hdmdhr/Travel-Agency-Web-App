@@ -159,7 +159,7 @@ namespace TeamLID.TravelExperts.App.Controllers
             else {
                 var id = loginCust.CustomerId;
                 var profile = CustomerProfileManager.Find(id);
-               
+
                 //return View(loginCust);
                 return View(profile);
             }
@@ -323,7 +323,6 @@ namespace TeamLID.TravelExperts.App.Controllers
             ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
             return View(customers);
         }
-
 
         // GET: Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
