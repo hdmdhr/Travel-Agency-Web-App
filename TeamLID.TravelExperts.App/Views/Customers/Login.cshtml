@@ -31,15 +31,25 @@
                         <br />
                     
                         <form asp-action="Login" asp-controller="Customers" class="form-signin text-center">
-                            @if (ViewBag.msg != null)
-    {
+                        @if (ViewBag.msg != null)
+                        {
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             @ViewBag.msg
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-}
+                        }
+                        
+                        @if (ViewBag.success != null)
+                        {
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                @ViewBag.success
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        }
 
                         @*<h1 class="h3 mb-3 font-weight-normal">Please log in</h1>*@
 

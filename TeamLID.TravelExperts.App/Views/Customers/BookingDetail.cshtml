@@ -1,0 +1,94 @@
+﻿@*@model TeamLID.TravelExperts.Repository.Domain.Bookings*@
+
+@model TeamLID.TravelExperts.App.Models.BookingsModel
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+<div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid jumbotron-customer">
+        <div class="container">
+            <h1 class="display-4 register-greetings h1-responsive">@Html.DisplayFor(model => model.PackageId)</h1>
+            <hr class="my-4">
+            <p class="lead register-heading">Booked</p>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+
+        <div class="register-main">
+
+            <div class="register-box">
+                <div>
+                    @*<a asp-action="Edit" asp-route-id="@Model.BookingId">Edit</a> |*@
+                    <a asp-action="CustomerHistory"><button class="btn btn-outline-primary"> Back to History </button></a>
+                </div>
+                <hr />
+                <br />
+                <div>
+                    <dl class="row">
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.BookingNo)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.BookingNo)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.PkgStartDate)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.PkgStartDate)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.PkgEndDate)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.PkgEndDate)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.TravelerCount)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.TravelerCount)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.CustomerId)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.CustomerId)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.PackageId)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.PackageId)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.PkgDesc)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.PkgDesc)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.TripTypeId)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.TripTypeId)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Price)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

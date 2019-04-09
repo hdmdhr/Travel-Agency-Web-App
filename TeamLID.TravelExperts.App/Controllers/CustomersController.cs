@@ -47,7 +47,7 @@ namespace TeamLID.TravelExperts.App.Controllers
                     CustLastName = user.CustLastName,
                     CustFirstName = user.CustFirstName,
                     CustBusPhone = Regex.Replace(user.CustBusPhone,@"[-.]","") ,  // remove . and -
-                    CustPostal = user.CustPostal.Replace('-',' '),  // T2G-1X6 => T2G 1X6
+                    CustPostal = user.CustPostal.Replace('-',' ').ToUpper(),  // T2G-1X6 => T2G 1X6
                     CustHomePhone = user.CustHomePhone != null ? Regex.Replace(user.CustHomePhone, @"[-.]", "") : null,
                     CustAddress = user.CustAddress,
                     CustCity = user.CustCity,
@@ -59,9 +59,9 @@ namespace TeamLID.TravelExperts.App.Controllers
                 };
                 try
                 {
-                    // 4. if insert successfully, login user(create session), redirect to history page
+                    // 4. if insert successfully, go to login page show success msg
                     await CustomerProfileManager.Add(newCust);
-                    //return RedirectToAction("Login", "Login");
+                    ViewBag.success = "Congratulations! Your account is active now, please log in.";
                     return View("Login");
                 }
                 catch (Exception e)
@@ -89,7 +89,7 @@ namespace TeamLID.TravelExperts.App.Controllers
             var cust = await CustomerProfileManager.CompareLogin(login.username, login.password);
 
             if (cust != null)
-            { 
+            {
                 // if username and pin match, add user to session
                 HttpContext.Session.SetObject("login", cust);
                 // direct to history page, with parameter customerId
@@ -135,7 +135,7 @@ namespace TeamLID.TravelExperts.App.Controllers
                         CustomerId = bk.Customer.CustFirstName,
                         TripTypeId = bk.TripType.Ttname,
                         PackageId = bk.Package.PkgName,
-                        Price = bk.Package.PkgBasePrice,
+                        Price = Math.Round((decimal)(bk.Package.PkgBasePrice + bk.Package.PkgAgencyCommission), 0),
                         //Total = TotalOwing(bk.Package.PkgBasePrice).ToString("c")
                     }).ToList();
 
@@ -148,15 +148,99 @@ namespace TeamLID.TravelExperts.App.Controllers
             }
         }
 
-        //This wasn't used eventually, TODO: Nuke it
-        public decimal TotalOwing(decimal amount)
+
+        public IActionResult Profile()
         {
-            decimal total = 0;
+            // if try access profile without login, go to login page
+            var loginCust = HttpContext.Session.GetObject<Customers>("login");
 
-            total += amount;
-
-            return total;
+            if (loginCust == null)
+                return View("Login");
+            else {
+                var id = loginCust.CustomerId;
+                var profile = CustomerProfileManager.Find(id);
+               
+                //return View(loginCust);
+                return View(profile);
+            }
         }
+
+
+        public ActionResult BookingDetail(int id)
+        {
+            var booking = BookingsManager.Find(id);
+
+            var a = new BookingsModel
+            {
+                BookingId = booking.BookingId,
+                BookingNo = booking.BookingNo,
+                PkgStartDate = booking.Package.PkgStartDate,
+                PkgEndDate = booking.Package.PkgEndDate,
+                TravelerCount = booking.TravelerCount,
+                CustomerId = booking.Customer.CustFirstName,
+                TripTypeId = booking.TripType.Ttname,
+                PkgDesc = booking.Package.PkgDesc,
+                PackageId = booking.Package.PkgName,
+                Price = Math.Round((decimal)(booking.Package.PkgBasePrice + booking.Package.PkgAgencyCommission), 0),
+            };
+
+            return View(a);
+        }
+
+        // GET: Customers/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var customers = await _context.Customers.FindAsync(id);
+            if (customers == null)
+            {
+                return NotFound();
+            }
+            ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
+            return View(customers);
+        }
+
+        // POST: Customers/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentId,Username,Password")] Customers customers)
+        {
+            if (id != customers.CustomerId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(customers);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CustomersExists(customers.CustomerId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Profile));
+            }
+            ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
+            return View(customers);
+        }
+
+        // Convenient Methods -------
 
         // Validate a UserViewModel object, return bool
         private bool ValidateUser(UserViewModel user)
@@ -176,6 +260,16 @@ namespace TeamLID.TravelExperts.App.Controllers
             return isValid;
         }
 
+
+        //This wasn't used eventually, TODO: Nuke it
+        public decimal TotalOwing(decimal amount)
+        {
+            decimal total = 0;
+
+            total += amount;
+
+            return total;
+        }
 
 
         // ------------------ Auto-generated Actions Below ------------------------
@@ -214,7 +308,7 @@ namespace TeamLID.TravelExperts.App.Controllers
         }
 
         // POST: Customers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -224,59 +318,6 @@ namespace TeamLID.TravelExperts.App.Controllers
             {
                 _context.Add(customers);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
-            return View(customers);
-        }
-
-        // GET: Customers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customers = await _context.Customers.FindAsync(id);
-            if (customers == null)
-            {
-                return NotFound();
-            }
-            ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
-            return View(customers);
-        }
-
-        // POST: Customers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentId,Username,Password")] Customers customers)
-        {
-            if (id != customers.CustomerId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(customers);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CustomersExists(customers.CustomerId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
