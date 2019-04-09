@@ -24,6 +24,11 @@
 
             <div class="register-box">
                 <div class="table-responsive-lg">
+                    @if(Model.Count() == 0){
+
+                        <h4 class="text-center mt-120">You have no bookings</h4>
+
+                    } else{
                     <table class='table table-hover'>
                         <thead>
                             <tr class="text-center">
@@ -37,8 +42,8 @@
                                     @Html.DisplayNameFor(model => model.TravelerCount)
                                 </th>
                                 @*<th>
-                    @Html.DisplayNameFor(model => model.CustomerId)
-                </th>*@
+                                    @Html.DisplayNameFor(model => model.CustomerId)
+                                </th>*@
                                 <th>
                                     @Html.DisplayNameFor(model => model.TripTypeId)
                                 </th>
@@ -52,43 +57,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
-        {
-                    <tr class="text-center">
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BookingDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BookingNo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TravelerCount)
-                        </td>
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.CustomerId)
-                        </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TripTypeId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PackageId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Price)
-                        </td>
-                        <td>
-                            @*<a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |*@
-                            <a asp-action="BookingDetail" asp-route-id="@item.BookingId"><button class="btn btn-outline-primary"> View Booking </button></a>
-                            @*|
-                            <a asp-action="Delete" asp-route-id="@item.PackageId">Delete</a>*@
-                        </td>
-                    </tr>
-                    }
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-center">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BookingDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BookingNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TravelerCount)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.CustomerId)
+                                </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TripTypeId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PackageId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    @*<a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |*@
+                                    <a asp-action="BookingDetail" asp-route-id="@item.BookingId"><button class="btn btn-outline-primary"> View Booking </button></a>
+                                    @*|
+                                    <a asp-action="Delete" asp-route-id="@item.PackageId">Delete</a>*@
+                                </td>
+                            </tr>
+                        }
                         </tbody>
                         <span class="mr-200 text-right">
                             <p> <strong>Total Owing</strong>: CAD @Model.Sum(p => p.Price).ToString("c0")</p>
                         </span>
                     </table>
+                    }
                     <br />
                     <br />
 

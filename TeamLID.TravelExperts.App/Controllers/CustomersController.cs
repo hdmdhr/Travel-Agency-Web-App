@@ -294,7 +294,7 @@ namespace TeamLID.TravelExperts.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentId")] Customers customers)
         {
-            // Was setting to null, so its removed..
+            // Was setting to null, so it was removed..
 
             //,Username,Password
 
