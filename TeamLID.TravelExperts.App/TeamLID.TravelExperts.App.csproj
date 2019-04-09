@@ -34,4 +34,10 @@
     <Content Remove="wwwroot\images\Travel1.jpg" />
     <Content Remove="wwwroot\images\European.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\CustomersController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wwwroot\images\profile.jpg" />
+  </ItemGroup>
 </Project>
