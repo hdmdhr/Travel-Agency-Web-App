@@ -324,6 +324,7 @@ namespace TeamLID.TravelExperts.App.Controllers
             return View(customers);
         }
 
+
         // GET: Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
