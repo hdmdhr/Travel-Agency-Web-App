@@ -311,7 +311,7 @@ namespace TeamLID.TravelExperts.App.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Profile));
             }
             ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
             return View(customers);

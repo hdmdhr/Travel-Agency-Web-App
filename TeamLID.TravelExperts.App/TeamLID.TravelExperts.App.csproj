@@ -37,7 +37,7 @@
   <!-- <ItemGroup>
     <Compile Remove="Controllers\CustomersController.cs" />
   </ItemGroup> -->
-  <ItemGroup>
+  <!-- <ItemGroup>
     <Content Include="wwwroot\images\profile.jpg" />
-  </ItemGroup>
+  </ItemGroup> -->
 </Project>

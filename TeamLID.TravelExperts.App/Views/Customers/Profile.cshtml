@@ -1,4 +1,6 @@
-﻿@model TeamLID.TravelExperts.Repository.Domain.Customers
+﻿@using Microsoft.AspNetCore.Http
+@using TeamLID.TravelExperts.Repository.Domain
+@model TeamLID.TravelExperts.Repository.Domain.Customers
 
 @{
     ViewData["Title"] = "Profile";
@@ -25,7 +27,7 @@
 
                     <div class="profile-box">
                         <div class="card package">
-                            <img src="~/images/profile.jpg" class="card-img-top" alt="profile">
+                            <img src="~/images/profiles.jpg" class="card-img-top" alt="profile">
                         </div>
                     </div>
                 </div>
@@ -34,7 +36,12 @@
                         <div class="">
                             @*Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })*@
                             <a asp-controller="Customers" asp-action="CustomerHistory" class=""><button class="btn btn-outline-primary">Back to history</button></a>
-                            <a asp-controller="Customers" asp-action="Edit" asp-route-id="104" class=""><button class="btn btn-outline-warning">Update Account</button></a>
+                            @{var loginCust = Context.Session.GetObject<Customers>("login");}
+                            @if (loginCust != null)
+                            {
+                                var custId = loginCust.CustomerId;
+                                <a asp-controller="Customers" asp-action="Edit" asp-route-id="@custId" class=""><button class="btn btn-outline-warning">Update Account</button></a>
+                            }
                         </div>
                         <br />
                         <br />
@@ -104,8 +111,8 @@
                     </div>
 
                 </div>
-                
-            </div>          
+
+            </div>
         </div>
     </div>
 </main>
