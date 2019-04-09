@@ -149,14 +149,20 @@ namespace TeamLID.TravelExperts.App.Controllers
         }
 
 
-        public async Task<IActionResult> Profile()
+        public IActionResult Profile()
         {
             // if try access profile without login, go to login page
             var loginCust = HttpContext.Session.GetObject<Customers>("login");
+
             if (loginCust == null)
                 return View("Login");
-            else
-                return View(loginCust);
+            else {
+                var id = loginCust.CustomerId;
+                var profile = CustomerProfileManager.Find(id);
+               
+                //return View(loginCust);
+                return View(profile);
+            }
         }
 
 
@@ -286,8 +292,13 @@ namespace TeamLID.TravelExperts.App.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentId,Username,Password")] Customers customers)
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentId")] Customers customers)
         {
+            // Was setting to null, so its removed..
+
+            //,Username,Password
+
+
             if (id != customers.CustomerId)
             {
                 return NotFound();
