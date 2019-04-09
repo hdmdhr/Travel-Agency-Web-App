@@ -180,14 +180,58 @@ namespace TeamLID.TravelExperts.App.Controllers
 
             return View(a);
         }
-        //This wasn't used eventually, TODO: Nuke it
-        public decimal TotalOwing(decimal amount)
+
+        // GET: Customers/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            decimal total = 0;
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            total += amount;
+            var customers = await _context.Customers.FindAsync(id);
+            if (customers == null)
+            {
+                return NotFound();
+            }
+            ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
+            return View(customers);
+        }
 
-            return total;
+        // POST: Customers/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentId,Username,Password")] Customers customers)
+        {
+            if (id != customers.CustomerId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(customers);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CustomersExists(customers.CustomerId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Profile));
+            }
+            ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
+            return View(customers);
         }
 
         // Convenient Methods -------
@@ -210,6 +254,16 @@ namespace TeamLID.TravelExperts.App.Controllers
             return isValid;
         }
 
+
+        //This wasn't used eventually, TODO: Nuke it
+        public decimal TotalOwing(decimal amount)
+        {
+            decimal total = 0;
+
+            total += amount;
+
+            return total;
+        }
 
 
         // ------------------ Auto-generated Actions Below ------------------------
@@ -264,58 +318,6 @@ namespace TeamLID.TravelExperts.App.Controllers
             return View(customers);
         }
 
-        // GET: Customers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customers = await _context.Customers.FindAsync(id);
-            if (customers == null)
-            {
-                return NotFound();
-            }
-            ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
-            return View(customers);
-        }
-
-        // POST: Customers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentId,Username,Password")] Customers customers)
-        {
-            if (id != customers.CustomerId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(customers);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CustomersExists(customers.CustomerId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Profile));
-            }
-            ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", customers.AgentId);
-            return View(customers);
-        }
 
         // GET: Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
