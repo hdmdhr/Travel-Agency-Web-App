@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+Authors: Ibraheem & Don Ming
+Purpose: Get customer
+*/
+using System;
 using System.ComponentModel;
 
 namespace TeamLID.TravelExperts.App.Models

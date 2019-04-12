@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+Authors: Ibraheem & Don Ming
+Purpose: Get customer profile and enable authentication
+*/
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
