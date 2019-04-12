@@ -35,8 +35,6 @@ namespace TeamLID.TravelExperts.App
 
             var connection = @"Server=localhost\sqlexpress;Database=TravelExperts;Trusted_Connection=True;ConnectRetryCount=0";
 
-            //Connection for MacBook: Always delete before pushing to github
-            //var connection = @"Server=localhost,1401;User=SA;Password=selfmade123#;Database=TravelExperts;";
 
             services.AddDbContext<TravelExpertsContext>(options => options.UseSqlServer(connection));
             services.AddSession(options => {  options.IdleTimeout = TimeSpan.FromMinutes(30); });
