@@ -1,0 +1,92 @@
+﻿@model TeamLID.TravelExperts.Repository.Domain.Customers
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Customers</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustFirstName" class="control-label"></label>
+                <input asp-for="CustFirstName" class="form-control" />
+                <span asp-validation-for="CustFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustLastName" class="control-label"></label>
+                <input asp-for="CustLastName" class="form-control" />
+                <span asp-validation-for="CustLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustAddress" class="control-label"></label>
+                <input asp-for="CustAddress" class="form-control" />
+                <span asp-validation-for="CustAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustCity" class="control-label"></label>
+                <input asp-for="CustCity" class="form-control" />
+                <span asp-validation-for="CustCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustProv" class="control-label"></label>
+                <input asp-for="CustProv" class="form-control" />
+                <span asp-validation-for="CustProv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustPostal" class="control-label"></label>
+                <input asp-for="CustPostal" class="form-control" />
+                <span asp-validation-for="CustPostal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustCountry" class="control-label"></label>
+                <input asp-for="CustCountry" class="form-control" />
+                <span asp-validation-for="CustCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustHomePhone" class="control-label"></label>
+                <input asp-for="CustHomePhone" class="form-control" />
+                <span asp-validation-for="CustHomePhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustBusPhone" class="control-label"></label>
+                <input asp-for="CustBusPhone" class="form-control" />
+                <span asp-validation-for="CustBusPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustEmail" class="control-label"></label>
+                <input asp-for="CustEmail" class="form-control" />
+                <span asp-validation-for="CustEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgentId" class="control-label"></label>
+                <select asp-for="AgentId" class ="form-control" asp-items="ViewBag.AgentId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
