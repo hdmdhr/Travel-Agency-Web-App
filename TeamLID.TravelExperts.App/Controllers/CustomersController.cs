@@ -1,6 +1,6 @@
 ﻿/*
-Author: Ibraheem
-Purpose: Get bookings from customers
+Author: Ibraheem, DongMing
+Purpose: Direct customers to register, login, profile, logout pages.
 */
 using System;
 using System.Collections.Generic;
@@ -24,6 +24,8 @@ namespace TeamLID.TravelExperts.App.Controllers
         {
             _context = context;
         }
+
+        // ------------------------ DongMing Hu ----------------------------------
 
         // GET: user access register page
         [HttpGet]
@@ -115,7 +117,25 @@ namespace TeamLID.TravelExperts.App.Controllers
             return View("Login");
         }
 
+        // GET: see profile if logged in
+        public IActionResult Profile()
+        {
+            // if try access profile without login, go to login page
+            var loginCust = HttpContext.Session.GetObject<Customers>("login");
 
+            if (loginCust == null)
+                return View("Login");
+            else
+            {
+                var id = loginCust.CustomerId;
+                var profile = CustomerProfileManager.Find(id);
+
+                //return View(loginCust);
+                return View(profile);
+            }
+        }
+
+        // ------------------------ END DongMing Hu -------------------------
 
         // GET: Bookings by customer (Customer Booking History)
         public ActionResult CustomerHistory()
@@ -149,23 +169,6 @@ namespace TeamLID.TravelExperts.App.Controllers
             } else {
                 return View("Login");
                 //return RedirectToAction("Login");
-            }
-        }
-
-
-        public IActionResult Profile()
-        {
-            // if try access profile without login, go to login page
-            var loginCust = HttpContext.Session.GetObject<Customers>("login");
-
-            if (loginCust == null)
-                return View("Login");
-            else {
-                var id = loginCust.CustomerId;
-                var profile = CustomerProfileManager.Find(id);
-               
-                //return View(loginCust);
-                return View(profile);
             }
         }
 

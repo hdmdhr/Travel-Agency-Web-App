@@ -1,5 +1,5 @@
 ﻿/*
-Authors: Ibraheem & Don Ming
+Authors: Ibraheem & Dong Ming
 Purpose: Get customer
 */
 using System;
