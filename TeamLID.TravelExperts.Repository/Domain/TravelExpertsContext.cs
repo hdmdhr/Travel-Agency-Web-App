@@ -45,7 +45,6 @@ namespace TeamLID.TravelExperts.Repository.Domain
 
                 optionsBuilder.UseSqlServer("Server=localhost\\sqlexpress;Database=TravelExperts;Trusted_Connection=True;");
 
-
             }
         }
 

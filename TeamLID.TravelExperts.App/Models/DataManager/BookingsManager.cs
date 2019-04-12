@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+Author: Ibraheem
+Purpose: Get bookings history for customers
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -27,8 +31,6 @@ namespace TeamLID.TravelExperts.App.Models.DataManager
         {
             var context = new TravelExpertsContext();
 
-            // find the domain entity with this context that has the same id as 
-            // the entity passed
             var booking = context.Bookings
                 .Include(customer => customer.Customer)
                 .Include(trip => trip.TripType)

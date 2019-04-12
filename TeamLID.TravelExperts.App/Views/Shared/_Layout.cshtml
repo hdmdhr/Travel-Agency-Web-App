@@ -1,4 +1,8 @@
-﻿@using Microsoft.AspNetCore.Http
+﻿@*/*
+Author: Ibraheem
+Purpose: base layout template
+*/*@
+@using Microsoft.AspNetCore.Http
 @using TeamLID.TravelExperts.Repository.Domain
 <!DOCTYPE html>
 <html>
@@ -93,7 +97,7 @@
             min-height: 800px;
             box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         }
-        
+
         .profile-box {
             margin-bottom: 40px;
             background: #fff;
@@ -181,13 +185,14 @@
             padding: 0;
         } */
 
-        .jumbotron-register { background-image: url('https://images.pexels.com/photos/533444/pexels-photo-533444.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); 
-            background-size: cover; 
-            color: black; 
-            /* position: relative; */ 
-            min-height: 400px; 
+        .jumbotron-register {
+            background-image: url('https://images.pexels.com/photos/533444/pexels-photo-533444.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+            background-size: cover;
+            color: black;
+            /* position: relative; */
+            min-height: 400px;
         }
-        
+
         .jumbotron-contact {
             background-image: url('https://images.pexels.com/photos/1416530/pexels-photo-1416530.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
             background-size: cover;
@@ -195,7 +200,8 @@
             min-height: 400px;
         }
 
-        .jumbotron-profile { background-image: url('https://images.pexels.com/photos/838413/pexels-photo-838413.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
+        .jumbotron-profile {
+            background-image: url('https://images.pexels.com/photos/838413/pexels-photo-838413.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
             background-size: cover;
             color: black;
             min-height: 400px;
@@ -255,7 +261,7 @@
             font-family: 'Metrophobic', sans-serif;
             border-radius: 15px;
         }
-        
+
         .parallax {
             /* Set a specific height */
             height: 426px;
@@ -295,21 +301,21 @@
                             <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button">Account</a>
                             <div class="dropdown-menu">
                                 <!-- If user session doesn't exist, show login & register, otherwise show logout & history -->
-                    @{
-                        if (Context.Session.GetObject<Customers>("login") == null)
-                        {
-                            <a class="dropdown-item" asp-controller="Customers" asp-action="Register">Register</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" asp-controller="Customers" asp-action="Login">Login</a>
-                        }
-                        else
-                        {
-                            <a class="dropdown-item" asp-controller="Customers" asp-action="CustomerHistory">Booking History</a>
-                            <a class="dropdown-item" asp-controller="Customers" asp-action="Profile">My Profile</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" asp-controller="Customers" asp-action="Logout">Logout</a>
-                        }
-                    }
+                                @{
+                                    if (Context.Session.GetObject<Customers>("login") == null)
+                                    {
+                                        <a class="dropdown-item" asp-controller="Customers" asp-action="Register">Register</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" asp-controller="Customers" asp-action="Login">Login</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="dropdown-item" asp-controller="Customers" asp-action="CustomerHistory">Booking History</a>
+                                        <a class="dropdown-item" asp-controller="Customers" asp-action="Profile">My Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" asp-controller="Customers" asp-action="Logout">Logout</a>
+                                    }
+                                }
                             </div>
                         </li>
                     </ul>
@@ -324,10 +330,10 @@
             @if (loginCust != null)
             {
                 @*var greetMsg = "Hello, " + loginCust.CustFirstName;*@
-            <h1 class="display-4 register-greetings h1-responsive text-center">
-                @*@greetMsg*@
-            </h1>
-    }
+                <h1 class="display-4 register-greetings h1-responsive text-center">
+                    @*@greetMsg*@
+                </h1>
+            }
 
             @RenderBody()
         </main>
@@ -350,21 +356,17 @@
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"
                 crossorigin="anonymous"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-        </script>
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
                 crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-        </script>
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"></script>
 
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
-    <script>
-        new WOW().init();
-    </script>
+    <script>new WOW().init();</script>
 
     @RenderSection("Scripts", required: false)
 </body>

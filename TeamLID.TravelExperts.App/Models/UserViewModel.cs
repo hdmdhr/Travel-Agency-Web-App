@@ -8,8 +8,12 @@ using TeamLID.TravelExperts.Repository.Domain;
 
 namespace TeamLID.TravelExperts.App.Models
 {
+    /*
+     * Author: DongMing Hu
+     */
+
     /// <summary>
-    /// User view model.
+    /// A class represent a user. Includes password, validations for phone and postal code.
     /// </summary>
     public class UserViewModel
     {
