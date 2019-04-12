@@ -1,3 +1,7 @@
+/*
+Author: Ibraheem
+Purpose: Get booking history from customers
+*/ 
 using System;
 using System.Collections.Generic;
 using System.Linq;

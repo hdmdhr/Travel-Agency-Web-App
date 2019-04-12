@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+Author: Ibraheem
+Purpose: Get bookings from customers
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
